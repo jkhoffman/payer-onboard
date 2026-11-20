@@ -1,0 +1,8 @@
+# Firely Server.
+vendor:
+  id: firely
+  match:
+    softwareName: "^Firely Server"
+  notes:
+    - The public server.fire.ly instance accepts writes from anyone; score recorded fixtures.
+    - Returns 501 for /.well-known/smart-configuration on the public instance.

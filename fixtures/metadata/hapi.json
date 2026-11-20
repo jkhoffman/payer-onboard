@@ -1,0 +1,2542 @@
+{
+ "resourceType": "CapabilityStatement",
+ "fhirVersion": "4.0.1",
+ "software": {
+  "name": "HAPI FHIR Server",
+  "version": "8.13.10-SNAPSHOT/6bd250944e/2026-09-25"
+ },
+ "implementation": {
+  "description": "HAPI FHIR Test/Demo Server R4 Endpoint",
+  "url": "https://hapi.fhir.org/baseR4"
+ },
+ "instantiates": [
+  "http://hl7.org/fhir/uv/bulkdata/CapabilityStatement/bulk-data"
+ ],
+ "date": "2026-11-20T13:58:57.913-05:00",
+ "rest": [
+  {
+   "mode": "server",
+   "security": null,
+   "resource": [
+    {
+     "extension": [
+      {
+       "url": "http://hl7api.sourceforge.net/hapi-fhir/res/extdefs.html#resourceCount",
+       "valueDecimal": 580
+      }
+     ],
+     "type": "Coverage",
+     "profile": "http://hl7.org/fhir/StructureDefinition/Coverage",
+     "supportedProfile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-coverage"
+     ],
+     "interaction": [
+      {
+       "code": "search-type"
+      },
+      {
+       "code": "update"
+      },
+      {
+       "code": "vread"
+      },
+      {
+       "code": "read"
+      },
+      {
+       "code": "patch"
+      },
+      {
+       "code": "history-type"
+      },
+      {
+       "code": "history-instance"
+      },
+      {
+       "code": "delete"
+      },
+      {
+       "code": "create"
+      }
+     ],
+     "versioning": "versioned-update",
+     "conditionalCreate": true,
+     "conditionalUpdate": true,
+     "conditionalDelete": "multiple",
+     "searchInclude": [
+      "*",
+      "Coverage:beneficiary",
+      "Coverage:patient",
+      "Coverage:payor",
+      "Coverage:policy-holder",
+      "Coverage:subscriber"
+     ],
+     "searchRevInclude": [
+      "ActivityDefinition:composed-of",
+      "ActivityDefinition:depends-on",
+      "ActivityDefinition:derived-from",
+      "ActivityDefinition:predecessor",
+      "ActivityDefinition:successor",
+      "Appointment:supporting-info",
+      "AuditEvent:entity",
+      "Basic:subject",
+      "ClinicalImpression:supporting-info",
+      "Communication:based-on",
+      "Communication:part-of",
+      "CommunicationRequest:based-on",
+      "Composition:entry",
+      "Composition:subject",
+      "Condition:evidence-detail",
+      "Consent:data",
+      "Contract:subject",
+      "DetectedIssue:implicated",
+      "DeviceRequest:based-on",
+      "DeviceRequest:insurance",
+      "DeviceRequest:prior-request",
+      "DocumentManifest:item",
+      "DocumentManifest:related-ref",
+      "DocumentReference:related",
+      "EventDefinition:composed-of",
+      "EventDefinition:depends-on",
+      "EventDefinition:derived-from",
+      "EventDefinition:predecessor",
+      "EventDefinition:successor",
+      "Evidence:composed-of",
+      "Evidence:depends-on",
+      "Evidence:derived-from",
+      "Evidence:predecessor",
+      "Evidence:successor",
+      "EvidenceVariable:composed-of",
+      "EvidenceVariable:depends-on",
+      "EvidenceVariable:derived-from",
+      "EvidenceVariable:predecessor",
+      "EvidenceVariable:successor",
+      "ExplanationOfBenefit:coverage",
+      "ImmunizationRecommendation:information",
+      "ImplementationGuide:resource",
+      "Library:composed-of",
+      "Library:depends-on",
+      "Library:derived-from",
+      "Library:predecessor",
+      "Library:successor",
+      "Linkage:item",
+      "Linkage:source",
+      "List:item",
+      "Measure:composed-of",
+      "Measure:depends-on",
+      "Measure:derived-from",
+      "Measure:predecessor",
+      "Measure:successor",
+      "MeasureReport:evaluated-resource",
+      "MessageHeader:focus",
+      "Observation:focus",
+      "PaymentNotice:request",
+      "PaymentNotice:response",
+      "PlanDefinition:composed-of",
+      "PlanDefinition:depends-on",
+      "PlanDefinition:derived-from",
+      "PlanDefinition:predecessor",
+      "PlanDefinition:successor",
+      "Provenance:entity",
+      "Provenance:target",
+      "QuestionnaireResponse:subject",
+      "RequestGroup:instantiates-canonical",
+      "ResearchDefinition:composed-of",
+      "ResearchDefinition:depends-on",
+      "ResearchDefinition:derived-from",
+      "ResearchDefinition:predecessor",
+      "ResearchDefinition:successor",
+      "ResearchElementDefinition:composed-of",
+      "ResearchElementDefinition:depends-on",
+      "ResearchElementDefinition:derived-from",
+      "ResearchElementDefinition:predecessor",
+      "ResearchElementDefinition:successor",
+      "Task:based-on",
+      "Task:focus",
+      "Task:subject",
+      "VerificationResult:target"
+     ],
+     "searchParam": [
+      {
+       "name": "_language",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-language",
+       "type": "token",
+       "documentation": "Language of the resource content"
+      },
+      {
+       "name": "identifier",
+       "definition": "http://hl7.org/fhir/SearchParameter/Coverage-identifier",
+       "type": "token",
+       "documentation": "The primary identifier of the insured and the coverage"
+      },
+      {
+       "name": "subscriber",
+       "definition": "http://hl7.org/fhir/SearchParameter/Coverage-subscriber",
+       "type": "reference",
+       "documentation": "Reference to the subscriber"
+      },
+      {
+       "name": "_lastUpdated",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+       "type": "date",
+       "documentation": "When the resource version last changed"
+      },
+      {
+       "name": "_security",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-security",
+       "type": "token",
+       "documentation": "Security Labels applied to this resource"
+      },
+      {
+       "name": "type",
+       "definition": "http://hl7.org/fhir/SearchParameter/Coverage-type",
+       "type": "token",
+       "documentation": "The kind of coverage (health plan, auto, Workers Compensation)"
+      },
+      {
+       "name": "_filter",
+       "type": "string",
+       "documentation": "Search the contents of the resource's data using a filter"
+      },
+      {
+       "name": "_list",
+       "type": "string",
+       "documentation": "Search the contents of the resource's data using a list"
+      },
+      {
+       "name": "payor",
+       "definition": "http://hl7.org/fhir/SearchParameter/Coverage-payor",
+       "type": "reference",
+       "documentation": "The identity of the insurer or party paying for services"
+      },
+      {
+       "name": "_profile",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-profile",
+       "type": "uri",
+       "documentation": "Profiles this resource claims to conform to"
+      },
+      {
+       "name": "beneficiary",
+       "definition": "http://hl7.org/fhir/SearchParameter/Coverage-beneficiary",
+       "type": "reference",
+       "documentation": "Covered party"
+      },
+      {
+       "name": "patient",
+       "definition": "http://hl7.org/fhir/SearchParameter/Coverage-patient",
+       "type": "reference",
+       "documentation": "Retrieve coverages for a patient"
+      },
+      {
+       "name": "_tag",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-tag",
+       "type": "token",
+       "documentation": "Tags applied to this resource"
+      },
+      {
+       "name": "_has",
+       "type": "string",
+       "documentation": "Return resources linked to by the given target"
+      },
+      {
+       "name": "class-value",
+       "definition": "http://hl7.org/fhir/SearchParameter/Coverage-class-value",
+       "type": "string",
+       "documentation": "Value of the class (eg. Plan number, group number)"
+      },
+      {
+       "name": "_source",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+       "type": "uri",
+       "documentation": "Identifies where the resource comes from"
+      },
+      {
+       "name": "_id",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+       "type": "token",
+       "documentation": "Logical id of this artifact"
+      },
+      {
+       "name": "class-type",
+       "definition": "http://hl7.org/fhir/SearchParameter/Coverage-class-type",
+       "type": "token",
+       "documentation": "Coverage class (eg. plan, group)"
+      },
+      {
+       "name": "dependent",
+       "definition": "http://hl7.org/fhir/SearchParameter/Coverage-dependent",
+       "type": "string",
+       "documentation": "Dependent number"
+      },
+      {
+       "name": "policy-holder",
+       "definition": "http://hl7.org/fhir/SearchParameter/Coverage-policy-holder",
+       "type": "reference",
+       "documentation": "Reference to the policyholder"
+      },
+      {
+       "name": "status",
+       "definition": "http://hl7.org/fhir/SearchParameter/Coverage-status",
+       "type": "token",
+       "documentation": "The status of the Coverage"
+      }
+     ],
+     "operation": [
+      {
+       "name": "validate",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-it-validate"
+      },
+      {
+       "name": "hapi.fhir.undo-merge",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-t-hapi.fhir.undo-merge"
+      },
+      {
+       "name": "meta-delete",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-i-meta-delete",
+       "documentation": "Delete tags, profiles, and/or security labels from a resource"
+      },
+      {
+       "name": "meta-add",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-i-meta-add",
+       "documentation": "Add tags, profiles, and/or security labels to a resource"
+      },
+      {
+       "name": "meta",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-its-meta",
+       "documentation": "Request a list of tags, profiles, and security labels for a specfic resource instance"
+      },
+      {
+       "name": "hapi.fhir.merge",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-t-hapi.fhir.merge"
+      },
+      {
+       "name": "expunge",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-its-expunge"
+      },
+      {
+       "name": "diff",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-is-diff",
+       "documentation": "This operation examines two resource versions (can be two versions of the same resource, or two different resources) and generates a FHIR Patch document showing the differences."
+      },
+      {
+       "name": "reindex-dryrun",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-i-reindex-dryrun"
+      },
+      {
+       "name": "reindex",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-is-reindex"
+      },
+      {
+       "name": "graphql",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-is-graphql",
+       "documentation": "This operation invokes a GraphQL expression for fetching an joining a graph of resources, returning them in a custom format."
+      }
+     ]
+    },
+    {
+     "extension": [
+      {
+       "url": "http://hl7api.sourceforge.net/hapi-fhir/res/extdefs.html#resourceCount",
+       "valueDecimal": 1575
+      }
+     ],
+     "type": "ExplanationOfBenefit",
+     "profile": "http://hl7.org/fhir/StructureDefinition/ExplanationOfBenefit",
+     "interaction": [
+      {
+       "code": "search-type"
+      },
+      {
+       "code": "update"
+      },
+      {
+       "code": "vread"
+      },
+      {
+       "code": "read"
+      },
+      {
+       "code": "patch"
+      },
+      {
+       "code": "history-type"
+      },
+      {
+       "code": "history-instance"
+      },
+      {
+       "code": "delete"
+      },
+      {
+       "code": "create"
+      }
+     ],
+     "versioning": "versioned-update",
+     "conditionalCreate": true,
+     "conditionalUpdate": true,
+     "conditionalDelete": "multiple",
+     "searchInclude": [
+      "*",
+      "ExplanationOfBenefit:care-team",
+      "ExplanationOfBenefit:claim",
+      "ExplanationOfBenefit:coverage",
+      "ExplanationOfBenefit:detail-udi",
+      "ExplanationOfBenefit:encounter",
+      "ExplanationOfBenefit:enterer",
+      "ExplanationOfBenefit:facility",
+      "ExplanationOfBenefit:item-udi",
+      "ExplanationOfBenefit:patient",
+      "ExplanationOfBenefit:payee",
+      "ExplanationOfBenefit:procedure-udi",
+      "ExplanationOfBenefit:provider",
+      "ExplanationOfBenefit:subdetail-udi"
+     ],
+     "searchRevInclude": [
+      "ActivityDefinition:composed-of",
+      "ActivityDefinition:depends-on",
+      "ActivityDefinition:derived-from",
+      "ActivityDefinition:predecessor",
+      "ActivityDefinition:successor",
+      "Appointment:supporting-info",
+      "AuditEvent:entity",
+      "Basic:subject",
+      "ClinicalImpression:supporting-info",
+      "Communication:based-on",
+      "Communication:part-of",
+      "CommunicationRequest:based-on",
+      "Composition:entry",
+      "Composition:subject",
+      "Condition:evidence-detail",
+      "Consent:data",
+      "Contract:subject",
+      "DetectedIssue:implicated",
+      "DeviceRequest:based-on",
+      "DeviceRequest:prior-request",
+      "DocumentManifest:item",
+      "DocumentManifest:related-ref",
+      "DocumentReference:related",
+      "EventDefinition:composed-of",
+      "EventDefinition:depends-on",
+      "EventDefinition:derived-from",
+      "EventDefinition:predecessor",
+      "EventDefinition:successor",
+      "Evidence:composed-of",
+      "Evidence:depends-on",
+      "Evidence:derived-from",
+      "Evidence:predecessor",
+      "Evidence:successor",
+      "EvidenceVariable:composed-of",
+      "EvidenceVariable:depends-on",
+      "EvidenceVariable:derived-from",
+      "EvidenceVariable:predecessor",
+      "EvidenceVariable:successor",
+      "ImmunizationRecommendation:information",
+      "ImplementationGuide:resource",
+      "Library:composed-of",
+      "Library:depends-on",
+      "Library:derived-from",
+      "Library:predecessor",
+      "Library:successor",
+      "Linkage:item",
+      "Linkage:source",
+      "List:item",
+      "Measure:composed-of",
+      "Measure:depends-on",
+      "Measure:derived-from",
+      "Measure:predecessor",
+      "Measure:successor",
+      "MeasureReport:evaluated-resource",
+      "MessageHeader:focus",
+      "Observation:focus",
+      "PaymentNotice:request",
+      "PaymentNotice:response",
+      "PlanDefinition:composed-of",
+      "PlanDefinition:depends-on",
+      "PlanDefinition:derived-from",
+      "PlanDefinition:predecessor",
+      "PlanDefinition:successor",
+      "Provenance:entity",
+      "Provenance:target",
+      "QuestionnaireResponse:subject",
+      "RequestGroup:instantiates-canonical",
+      "ResearchDefinition:composed-of",
+      "ResearchDefinition:depends-on",
+      "ResearchDefinition:derived-from",
+      "ResearchDefinition:predecessor",
+      "ResearchDefinition:successor",
+      "ResearchElementDefinition:composed-of",
+      "ResearchElementDefinition:depends-on",
+      "ResearchElementDefinition:derived-from",
+      "ResearchElementDefinition:predecessor",
+      "ResearchElementDefinition:successor",
+      "Task:based-on",
+      "Task:focus",
+      "Task:subject",
+      "VerificationResult:target"
+     ],
+     "searchParam": [
+      {
+       "name": "care-team",
+       "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-care-team",
+       "type": "reference",
+       "documentation": "Member of the CareTeam"
+      },
+      {
+       "name": "_language",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-language",
+       "type": "token",
+       "documentation": "Language of the resource content"
+      },
+      {
+       "name": "_lastUpdated",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+       "type": "date",
+       "documentation": "When the resource version last changed"
+      },
+      {
+       "name": "payee",
+       "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-payee",
+       "type": "reference",
+       "documentation": "The party receiving any payment for the Claim"
+      },
+      {
+       "name": "_list",
+       "type": "string",
+       "documentation": "Search the contents of the resource's data using a list"
+      },
+      {
+       "name": "provider",
+       "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-provider",
+       "type": "reference",
+       "documentation": "The reference to the provider"
+      },
+      {
+       "name": "patient",
+       "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-patient",
+       "type": "reference",
+       "documentation": "The reference to the patient"
+      },
+      {
+       "name": "detail-udi",
+       "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-detail-udi",
+       "type": "reference",
+       "documentation": "UDI associated with a line item detail product or service"
+      },
+      {
+       "name": "claim",
+       "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-claim",
+       "type": "reference",
+       "documentation": "The reference to the claim"
+      },
+      {
+       "name": "enterer",
+       "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-enterer",
+       "type": "reference",
+       "documentation": "The party responsible for the entry of the Claim"
+      },
+      {
+       "name": "procedure-udi",
+       "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-procedure-udi",
+       "type": "reference",
+       "documentation": "UDI associated with a procedure"
+      },
+      {
+       "name": "item-udi",
+       "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-item-udi",
+       "type": "reference",
+       "documentation": "UDI associated with a line item product or service"
+      },
+      {
+       "name": "coverage",
+       "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-coverage",
+       "type": "reference",
+       "documentation": "The plan under which the claim was adjudicated"
+      },
+      {
+       "name": "identifier",
+       "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-identifier",
+       "type": "token",
+       "documentation": "The business identifier of the Explanation of Benefit"
+      },
+      {
+       "name": "created",
+       "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-created",
+       "type": "date",
+       "documentation": "The creation date for the EOB"
+      },
+      {
+       "name": "_security",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-security",
+       "type": "token",
+       "documentation": "Security Labels applied to this resource"
+      },
+      {
+       "name": "encounter",
+       "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-encounter",
+       "type": "reference",
+       "documentation": "Encounters associated with a billed line item"
+      },
+      {
+       "name": "_filter",
+       "type": "string",
+       "documentation": "Search the contents of the resource's data using a filter"
+      },
+      {
+       "name": "disposition",
+       "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-disposition",
+       "type": "string",
+       "documentation": "The contents of the disposition message"
+      },
+      {
+       "name": "_profile",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-profile",
+       "type": "uri",
+       "documentation": "Profiles this resource claims to conform to"
+      },
+      {
+       "name": "_tag",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-tag",
+       "type": "token",
+       "documentation": "Tags applied to this resource"
+      },
+      {
+       "name": "_has",
+       "type": "string",
+       "documentation": "Return resources linked to by the given target"
+      },
+      {
+       "name": "_source",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+       "type": "uri",
+       "documentation": "Identifies where the resource comes from"
+      },
+      {
+       "name": "_id",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+       "type": "token",
+       "documentation": "Logical id of this artifact"
+      },
+      {
+       "name": "subdetail-udi",
+       "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-subdetail-udi",
+       "type": "reference",
+       "documentation": "UDI associated with a line item detail subdetail product or service"
+      },
+      {
+       "name": "facility",
+       "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-facility",
+       "type": "reference",
+       "documentation": "Facility responsible for the goods and services"
+      },
+      {
+       "name": "status",
+       "definition": "http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-status",
+       "type": "token",
+       "documentation": "Status of the instance"
+      }
+     ],
+     "operation": [
+      {
+       "name": "validate",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-it-validate"
+      },
+      {
+       "name": "hapi.fhir.undo-merge",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-t-hapi.fhir.undo-merge"
+      },
+      {
+       "name": "meta-delete",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-i-meta-delete",
+       "documentation": "Delete tags, profiles, and/or security labels from a resource"
+      },
+      {
+       "name": "meta-add",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-i-meta-add",
+       "documentation": "Add tags, profiles, and/or security labels to a resource"
+      },
+      {
+       "name": "meta",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-its-meta",
+       "documentation": "Request a list of tags, profiles, and security labels for a specfic resource instance"
+      },
+      {
+       "name": "hapi.fhir.merge",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-t-hapi.fhir.merge"
+      },
+      {
+       "name": "expunge",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-its-expunge"
+      },
+      {
+       "name": "diff",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-is-diff",
+       "documentation": "This operation examines two resource versions (can be two versions of the same resource, or two different resources) and generates a FHIR Patch document showing the differences."
+      },
+      {
+       "name": "reindex-dryrun",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-i-reindex-dryrun"
+      },
+      {
+       "name": "reindex",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-is-reindex"
+      },
+      {
+       "name": "graphql",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-is-graphql",
+       "documentation": "This operation invokes a GraphQL expression for fetching an joining a graph of resources, returning them in a custom format."
+      }
+     ]
+    },
+    {
+     "extension": [
+      {
+       "url": "http://hl7api.sourceforge.net/hapi-fhir/res/extdefs.html#resourceCount",
+       "valueDecimal": 2443
+      }
+     ],
+     "type": "Organization",
+     "profile": "http://hl7.org/fhir/StructureDefinition/Organization",
+     "supportedProfile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization"
+     ],
+     "interaction": [
+      {
+       "code": "search-type"
+      },
+      {
+       "code": "update"
+      },
+      {
+       "code": "vread"
+      },
+      {
+       "code": "read"
+      },
+      {
+       "code": "patch"
+      },
+      {
+       "code": "history-type"
+      },
+      {
+       "code": "history-instance"
+      },
+      {
+       "code": "delete"
+      },
+      {
+       "code": "create"
+      }
+     ],
+     "versioning": "versioned-update",
+     "conditionalCreate": true,
+     "conditionalUpdate": true,
+     "conditionalDelete": "multiple",
+     "searchInclude": [
+      "*",
+      "Organization:endpoint",
+      "Organization:partof"
+     ],
+     "searchRevInclude": [
+      "Account:owner",
+      "Account:subject",
+      "ActivityDefinition:composed-of",
+      "ActivityDefinition:depends-on",
+      "ActivityDefinition:derived-from",
+      "ActivityDefinition:predecessor",
+      "ActivityDefinition:successor",
+      "Appointment:supporting-info",
+      "AuditEvent:agent",
+      "AuditEvent:entity",
+      "AuditEvent:source",
+      "Basic:author",
+      "Basic:subject",
+      "CarePlan:performer",
+      "CareTeam:participant",
+      "ChargeItem:enterer",
+      "ChargeItem:performer-actor",
+      "ChargeItem:performing-organization",
+      "ChargeItem:requesting-organization",
+      "Claim:care-team",
+      "Claim:insurer",
+      "Claim:payee",
+      "Claim:provider",
+      "ClaimResponse:insurer",
+      "ClaimResponse:requestor",
+      "ClinicalImpression:supporting-info",
+      "Communication:based-on",
+      "Communication:part-of",
+      "Communication:recipient",
+      "Communication:sender",
+      "CommunicationRequest:based-on",
+      "CommunicationRequest:recipient",
+      "CommunicationRequest:requester",
+      "CommunicationRequest:sender",
+      "Composition:attester",
+      "Composition:author",
+      "Composition:entry",
+      "Composition:subject",
+      "Condition:evidence-detail",
+      "Consent:actor",
+      "Consent:consentor",
+      "Consent:data",
+      "Consent:organization",
+      "Contract:authority",
+      "Contract:signer",
+      "Contract:subject",
+      "Coverage:payor",
+      "Coverage:policy-holder",
+      "CoverageEligibilityRequest:provider",
+      "CoverageEligibilityResponse:insurer",
+      "CoverageEligibilityResponse:requestor",
+      "DetectedIssue:implicated",
+      "Device:organization",
+      "DeviceRequest:based-on",
+      "DeviceRequest:performer",
+      "DeviceRequest:prior-request",
+      "DeviceRequest:requester",
+      "DiagnosticReport:performer",
+      "DiagnosticReport:results-interpreter",
+      "DocumentManifest:author",
+      "DocumentManifest:item",
+      "DocumentManifest:recipient",
+      "DocumentManifest:related-ref",
+      "DocumentReference:authenticator",
+      "DocumentReference:author",
+      "DocumentReference:custodian",
+      "DocumentReference:related",
+      "Encounter:service-provider",
+      "Endpoint:organization",
+      "EpisodeOfCare:organization",
+      "EventDefinition:composed-of",
+      "EventDefinition:depends-on",
+      "EventDefinition:derived-from",
+      "EventDefinition:predecessor",
+      "EventDefinition:successor",
+      "Evidence:composed-of",
+      "Evidence:depends-on",
+      "Evidence:derived-from",
+      "Evidence:predecessor",
+      "Evidence:successor",
+      "EvidenceVariable:composed-of",
+      "EvidenceVariable:depends-on",
+      "EvidenceVariable:derived-from",
+      "EvidenceVariable:predecessor",
+      "EvidenceVariable:successor",
+      "ExplanationOfBenefit:care-team",
+      "ExplanationOfBenefit:payee",
+      "ExplanationOfBenefit:provider",
+      "Flag:author",
+      "Flag:subject",
+      "Goal:subject",
+      "Group:managing-entity",
+      "HealthcareService:organization",
+      "ImagingStudy:performer",
+      "Immunization:manufacturer",
+      "Immunization:performer",
+      "ImmunizationRecommendation:information",
+      "ImplementationGuide:resource",
+      "InsurancePlan:administered-by",
+      "InsurancePlan:owned-by",
+      "Invoice:issuer",
+      "Invoice:participant",
+      "Invoice:recipient",
+      "Library:composed-of",
+      "Library:depends-on",
+      "Library:derived-from",
+      "Library:predecessor",
+      "Library:successor",
+      "Linkage:author",
+      "Linkage:item",
+      "Linkage:source",
+      "List:item",
+      "Location:organization",
+      "Measure:composed-of",
+      "Measure:depends-on",
+      "Measure:derived-from",
+      "Measure:predecessor",
+      "Measure:successor",
+      "MeasureReport:evaluated-resource",
+      "MeasureReport:reporter",
+      "Media:operator",
+      "Medication:manufacturer",
+      "MedicationDispense:performer",
+      "MedicationKnowledge:manufacturer",
+      "MedicationRequest:intended-dispenser",
+      "MedicationRequest:intended-performer",
+      "MedicationRequest:requester",
+      "MedicationStatement:source",
+      "MedicinalProductAuthorization:holder",
+      "MessageHeader:focus",
+      "MessageHeader:receiver",
+      "MessageHeader:responsible",
+      "MessageHeader:sender",
+      "Observation:focus",
+      "Observation:performer",
+      "Organization:partof",
+      "OrganizationAffiliation:network",
+      "OrganizationAffiliation:participating-organization",
+      "OrganizationAffiliation:primary-organization",
+      "Patient:general-practitioner",
+      "Patient:organization",
+      "PaymentNotice:provider",
+      "PaymentNotice:request",
+      "PaymentNotice:response",
+      "PaymentReconciliation:payment-issuer",
+      "PaymentReconciliation:requestor",
+      "Person:organization",
+      "PlanDefinition:composed-of",
+      "PlanDefinition:depends-on",
+      "PlanDefinition:derived-from",
+      "PlanDefinition:predecessor",
+      "PlanDefinition:successor",
+      "PractitionerRole:organization",
+      "Procedure:performer",
+      "Provenance:agent",
+      "Provenance:entity",
+      "Provenance:target",
+      "QuestionnaireResponse:author",
+      "QuestionnaireResponse:subject",
+      "RequestGroup:instantiates-canonical",
+      "ResearchDefinition:composed-of",
+      "ResearchDefinition:depends-on",
+      "ResearchDefinition:derived-from",
+      "ResearchDefinition:predecessor",
+      "ResearchDefinition:successor",
+      "ResearchElementDefinition:composed-of",
+      "ResearchElementDefinition:depends-on",
+      "ResearchElementDefinition:derived-from",
+      "ResearchElementDefinition:predecessor",
+      "ResearchElementDefinition:successor",
+      "ResearchStudy:sponsor",
+      "ServiceRequest:performer",
+      "ServiceRequest:requester",
+      "SupplyDelivery:supplier",
+      "SupplyRequest:requester",
+      "SupplyRequest:subject",
+      "SupplyRequest:supplier",
+      "Task:based-on",
+      "Task:focus",
+      "Task:owner",
+      "Task:requester",
+      "Task:subject",
+      "VerificationResult:target"
+     ],
+     "searchParam": [
+      {
+       "name": "_language",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-language",
+       "type": "token",
+       "documentation": "Language of the resource content"
+      },
+      {
+       "name": "identifier",
+       "definition": "http://hl7.org/fhir/SearchParameter/Organization-identifier",
+       "type": "token",
+       "documentation": "Any identifier for the organization (not the accreditation issuer's identifier)"
+      },
+      {
+       "name": "partof",
+       "definition": "http://hl7.org/fhir/SearchParameter/Organization-partof",
+       "type": "reference",
+       "documentation": "An organization of which this organization forms a part"
+      },
+      {
+       "name": "address",
+       "definition": "http://hl7.org/fhir/SearchParameter/Organization-address",
+       "type": "string",
+       "documentation": "A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text"
+      },
+      {
+       "name": "address-state",
+       "definition": "http://hl7.org/fhir/SearchParameter/Organization-address-state",
+       "type": "string",
+       "documentation": "A state specified in an address"
+      },
+      {
+       "name": "_lastUpdated",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+       "type": "date",
+       "documentation": "When the resource version last changed"
+      },
+      {
+       "name": "_security",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-security",
+       "type": "token",
+       "documentation": "Security Labels applied to this resource"
+      },
+      {
+       "name": "active",
+       "definition": "http://hl7.org/fhir/SearchParameter/Organization-active",
+       "type": "token",
+       "documentation": "Is the Organization record active"
+      },
+      {
+       "name": "type",
+       "definition": "http://hl7.org/fhir/SearchParameter/Organization-type",
+       "type": "token",
+       "documentation": "A code for the type of organization"
+      },
+      {
+       "name": "address-postalcode",
+       "definition": "http://hl7.org/fhir/SearchParameter/Organization-address-postalcode",
+       "type": "string",
+       "documentation": "A postal code specified in an address"
+      },
+      {
+       "name": "address-country",
+       "definition": "http://hl7.org/fhir/SearchParameter/Organization-address-country",
+       "type": "string",
+       "documentation": "A country specified in an address"
+      },
+      {
+       "name": "_filter",
+       "type": "string",
+       "documentation": "Search the contents of the resource's data using a filter"
+      },
+      {
+       "name": "_list",
+       "type": "string",
+       "documentation": "Search the contents of the resource's data using a list"
+      },
+      {
+       "name": "endpoint",
+       "definition": "http://hl7.org/fhir/SearchParameter/Organization-endpoint",
+       "type": "reference",
+       "documentation": "Technical endpoints providing access to services operated for the organization"
+      },
+      {
+       "name": "phonetic",
+       "definition": "http://hl7.org/fhir/SearchParameter/Organization-phonetic",
+       "type": "string",
+       "documentation": "A portion of the organization's name using some kind of phonetic matching algorithm"
+      },
+      {
+       "name": "_profile",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-profile",
+       "type": "uri",
+       "documentation": "Profiles this resource claims to conform to"
+      },
+      {
+       "name": "_tag",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-tag",
+       "type": "token",
+       "documentation": "Tags applied to this resource"
+      },
+      {
+       "name": "_has",
+       "type": "string",
+       "documentation": "Return resources linked to by the given target"
+      },
+      {
+       "name": "address-use",
+       "definition": "http://hl7.org/fhir/SearchParameter/Organization-address-use",
+       "type": "token",
+       "documentation": "A use code specified in an address"
+      },
+      {
+       "name": "name",
+       "definition": "http://hl7.org/fhir/SearchParameter/Organization-name",
+       "type": "string",
+       "documentation": "A portion of the organization's name or alias"
+      },
+      {
+       "name": "_source",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+       "type": "uri",
+       "documentation": "Identifies where the resource comes from"
+      },
+      {
+       "name": "_id",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+       "type": "token",
+       "documentation": "Logical id of this artifact"
+      },
+      {
+       "name": "address-city",
+       "definition": "http://hl7.org/fhir/SearchParameter/Organization-address-city",
+       "type": "string",
+       "documentation": "A city specified in an address"
+      }
+     ],
+     "operation": [
+      {
+       "name": "validate",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-it-validate"
+      },
+      {
+       "name": "hapi.fhir.undo-merge",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-t-hapi.fhir.undo-merge"
+      },
+      {
+       "name": "meta-delete",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-i-meta-delete",
+       "documentation": "Delete tags, profiles, and/or security labels from a resource"
+      },
+      {
+       "name": "meta-add",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-i-meta-add",
+       "documentation": "Add tags, profiles, and/or security labels to a resource"
+      },
+      {
+       "name": "meta",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-its-meta",
+       "documentation": "Request a list of tags, profiles, and security labels for a specfic resource instance"
+      },
+      {
+       "name": "hapi.fhir.merge",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-t-hapi.fhir.merge"
+      },
+      {
+       "name": "expunge",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-its-expunge"
+      },
+      {
+       "name": "diff",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-is-diff",
+       "documentation": "This operation examines two resource versions (can be two versions of the same resource, or two different resources) and generates a FHIR Patch document showing the differences."
+      },
+      {
+       "name": "reindex-dryrun",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-i-reindex-dryrun"
+      },
+      {
+       "name": "reindex",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-is-reindex"
+      },
+      {
+       "name": "graphql",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-is-graphql",
+       "documentation": "This operation invokes a GraphQL expression for fetching an joining a graph of resources, returning them in a custom format."
+      }
+     ]
+    },
+    {
+     "extension": [
+      {
+       "url": "http://hl7api.sourceforge.net/hapi-fhir/res/extdefs.html#resourceCount",
+       "valueDecimal": 35710
+      }
+     ],
+     "type": "Patient",
+     "profile": "http://hl7.org/fhir/StructureDefinition/Patient",
+     "supportedProfile": [
+      "http://hl7.at/fhir/HL7ATCoreProfiles/4.0.1/StructureDefinition/at-core-patient",
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient",
+      "https://example.org/fhir/StructureDefinition/my-patient-profile",
+      "https://f-slg.github.io/aprende-fhir/StructureDefinition/paciente-taller"
+     ],
+     "interaction": [
+      {
+       "code": "search-type"
+      },
+      {
+       "code": "update"
+      },
+      {
+       "code": "vread"
+      },
+      {
+       "code": "read"
+      },
+      {
+       "code": "patch"
+      },
+      {
+       "code": "history-type"
+      },
+      {
+       "code": "history-instance"
+      },
+      {
+       "code": "delete"
+      },
+      {
+       "code": "create"
+      }
+     ],
+     "versioning": "versioned-update",
+     "conditionalCreate": true,
+     "conditionalUpdate": true,
+     "conditionalDelete": "multiple",
+     "searchInclude": [
+      "*",
+      "Patient:general-practitioner",
+      "Patient:link",
+      "Patient:organization"
+     ],
+     "searchRevInclude": [
+      "Account:patient",
+      "Account:subject",
+      "ActivityDefinition:composed-of",
+      "ActivityDefinition:depends-on",
+      "ActivityDefinition:derived-from",
+      "ActivityDefinition:predecessor",
+      "ActivityDefinition:successor",
+      "AdverseEvent:recorder",
+      "AdverseEvent:subject",
+      "AllergyIntolerance:asserter",
+      "AllergyIntolerance:patient",
+      "AllergyIntolerance:recorder",
+      "Appointment:actor",
+      "Appointment:patient",
+      "Appointment:supporting-info",
+      "AppointmentResponse:actor",
+      "AppointmentResponse:patient",
+      "AuditEvent:agent",
+      "AuditEvent:entity",
+      "AuditEvent:patient",
+      "AuditEvent:source",
+      "Basic:author",
+      "Basic:patient",
+      "Basic:subject",
+      "BodyStructure:patient",
+      "CarePlan:patient",
+      "CarePlan:performer",
+      "CarePlan:subject",
+      "CareTeam:participant",
+      "CareTeam:patient",
+      "CareTeam:subject",
+      "ChargeItem:enterer",
+      "ChargeItem:patient",
+      "ChargeItem:performer-actor",
+      "ChargeItem:subject",
+      "Claim:patient",
+      "Claim:payee",
+      "ClaimResponse:patient",
+      "ClinicalImpression:patient",
+      "ClinicalImpression:subject",
+      "ClinicalImpression:supporting-info",
+      "Communication:based-on",
+      "Communication:part-of",
+      "Communication:patient",
+      "Communication:recipient",
+      "Communication:sender",
+      "Communication:subject",
+      "CommunicationRequest:based-on",
+      "CommunicationRequest:patient",
+      "CommunicationRequest:recipient",
+      "CommunicationRequest:requester",
+      "CommunicationRequest:sender",
+      "CommunicationRequest:subject",
+      "Composition:attester",
+      "Composition:author",
+      "Composition:entry",
+      "Composition:patient",
+      "Composition:subject",
+      "Condition:asserter",
+      "Condition:evidence-detail",
+      "Condition:patient",
+      "Condition:subject",
+      "Consent:actor",
+      "Consent:consentor",
+      "Consent:data",
+      "Consent:patient",
+      "Contract:patient",
+      "Contract:signer",
+      "Contract:subject",
+      "Coverage:beneficiary",
+      "Coverage:patient",
+      "Coverage:payor",
+      "Coverage:policy-holder",
+      "Coverage:subscriber",
+      "CoverageEligibilityRequest:patient",
+      "CoverageEligibilityResponse:patient",
+      "DetectedIssue:implicated",
+      "DetectedIssue:patient",
+      "Device:patient",
+      "DeviceRequest:based-on",
+      "DeviceRequest:patient",
+      "DeviceRequest:performer",
+      "DeviceRequest:prior-request",
+      "DeviceRequest:subject",
+      "DeviceUseStatement:patient",
+      "DeviceUseStatement:subject",
+      "DiagnosticReport:patient",
+      "DiagnosticReport:subject",
+      "DocumentManifest:author",
+      "DocumentManifest:item",
+      "DocumentManifest:patient",
+      "DocumentManifest:recipient",
+      "DocumentManifest:related-ref",
+      "DocumentManifest:subject",
+      "DocumentReference:author",
+      "DocumentReference:patient",
+      "DocumentReference:related",
+      "DocumentReference:subject",
+      "Encounter:patient",
+      "Encounter:subject",
+      "EnrollmentRequest:patient",
+      "EnrollmentRequest:subject",
+      "EpisodeOfCare:patient",
+      "EventDefinition:composed-of",
+      "EventDefinition:depends-on",
+      "EventDefinition:derived-from",
+      "EventDefinition:predecessor",
+      "EventDefinition:successor",
+      "Evidence:composed-of",
+      "Evidence:depends-on",
+      "Evidence:derived-from",
+      "Evidence:predecessor",
+      "Evidence:successor",
+      "EvidenceVariable:composed-of",
+      "EvidenceVariable:depends-on",
+      "EvidenceVariable:derived-from",
+      "EvidenceVariable:predecessor",
+      "EvidenceVariable:successor",
+      "ExplanationOfBenefit:patient",
+      "ExplanationOfBenefit:payee",
+      "FamilyMemberHistory:patient",
+      "Flag:author",
+      "Flag:patient",
+      "Flag:subject",
+      "Goal:patient",
+      "Goal:subject",
+      "Group:member",
+      "GuidanceResponse:patient",
+      "GuidanceResponse:subject",
+      "ImagingStudy:patient",
+      "ImagingStudy:performer",
+      "ImagingStudy:subject",
+      "Immunization:patient",
+      "ImmunizationEvaluation:patient",
+      "ImmunizationRecommendation:information",
+      "ImmunizationRecommendation:patient",
+      "ImplementationGuide:resource",
+      "Invoice:participant",
+      "Invoice:patient",
+      "Invoice:recipient",
+      "Invoice:subject",
+      "Library:composed-of",
+      "Library:depends-on",
+      "Library:derived-from",
+      "Library:predecessor",
+      "Library:successor",
+      "Linkage:item",
+      "Linkage:source",
+      "List:item",
+      "List:patient",
+      "List:source",
+      "List:subject",
+      "Measure:composed-of",
+      "Measure:depends-on",
+      "Measure:derived-from",
+      "Measure:predecessor",
+      "Measure:successor",
+      "MeasureReport:evaluated-resource",
+      "MeasureReport:patient",
+      "MeasureReport:subject",
+      "Media:operator",
+      "Media:patient",
+      "Media:subject",
+      "MedicationAdministration:patient",
+      "MedicationAdministration:performer",
+      "MedicationAdministration:subject",
+      "MedicationDispense:patient",
+      "MedicationDispense:performer",
+      "MedicationDispense:receiver",
+      "MedicationDispense:subject",
+      "MedicationRequest:intended-performer",
+      "MedicationRequest:patient",
+      "MedicationRequest:requester",
+      "MedicationRequest:subject",
+      "MedicationStatement:patient",
+      "MedicationStatement:source",
+      "MedicationStatement:subject",
+      "MessageHeader:focus",
+      "MolecularSequence:patient",
+      "NutritionOrder:patient",
+      "Observation:focus",
+      "Observation:patient",
+      "Observation:performer",
+      "Observation:subject",
+      "Patient:link",
+      "PaymentNotice:request",
+      "PaymentNotice:response",
+      "Person:link",
+      "Person:patient",
+      "PlanDefinition:composed-of",
+      "PlanDefinition:depends-on",
+      "PlanDefinition:derived-from",
+      "PlanDefinition:predecessor",
+      "PlanDefinition:successor",
+      "Procedure:patient",
+      "Procedure:performer",
+      "Procedure:subject",
+      "Provenance:agent",
+      "Provenance:entity",
+      "Provenance:patient",
+      "Provenance:target",
+      "QuestionnaireResponse:author",
+      "QuestionnaireResponse:patient",
+      "QuestionnaireResponse:source",
+      "QuestionnaireResponse:subject",
+      "RelatedPerson:patient",
+      "RequestGroup:instantiates-canonical",
+      "RequestGroup:participant",
+      "RequestGroup:patient",
+      "RequestGroup:subject",
+      "ResearchDefinition:composed-of",
+      "ResearchDefinition:depends-on",
+      "ResearchDefinition:derived-from",
+      "ResearchDefinition:predecessor",
+      "ResearchDefinition:successor",
+      "ResearchElementDefinition:composed-of",
+      "ResearchElementDefinition:depends-on",
+      "ResearchElementDefinition:derived-from",
+      "ResearchElementDefinition:predecessor",
+      "ResearchElementDefinition:successor",
+      "ResearchSubject:individual",
+      "ResearchSubject:patient",
+      "RiskAssessment:patient",
+      "RiskAssessment:subject",
+      "Schedule:actor",
+      "ServiceRequest:patient",
+      "ServiceRequest:performer",
+      "ServiceRequest:requester",
+      "ServiceRequest:subject",
+      "Specimen:patient",
+      "Specimen:subject",
+      "SupplyDelivery:patient",
+      "SupplyRequest:requester",
+      "SupplyRequest:subject",
+      "Task:based-on",
+      "Task:focus",
+      "Task:owner",
+      "Task:patient",
+      "Task:requester",
+      "Task:subject",
+      "VerificationResult:target",
+      "VisionPrescription:patient"
+     ],
+     "searchParam": [
+      {
+       "name": "_language",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-language",
+       "type": "token",
+       "documentation": "Language of the resource content"
+      },
+      {
+       "name": "birthdate",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-birthdate",
+       "type": "date",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): The patient's date of birth\r\n* [Person](https://hl7.org/fhir/R4/person.html): The person's date of birth\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): The Related Person's date of birth\r\n"
+      },
+      {
+       "name": "deceased",
+       "definition": "http://hl7.org/fhir/SearchParameter/Patient-deceased",
+       "type": "token",
+       "documentation": "This patient has been marked as deceased, or as a death date entered"
+      },
+      {
+       "name": "address-state",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-address-state",
+       "type": "string",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A state specified in an address\r\n* [Person](https://hl7.org/fhir/R4/person.html): A state specified in an address\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A state specified in an address\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A state specified in an address\r\n"
+      },
+      {
+       "name": "gender",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-gender",
+       "type": "token",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): Gender of the patient\r\n* [Person](https://hl7.org/fhir/R4/person.html): The gender of the person\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): Gender of the practitioner\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): Gender of the related person\r\n"
+      },
+      {
+       "name": "_lastUpdated",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+       "type": "date",
+       "documentation": "When the resource version last changed"
+      },
+      {
+       "name": "link",
+       "definition": "http://hl7.org/fhir/SearchParameter/Patient-link",
+       "type": "reference",
+       "documentation": "All patients linked to the given patient"
+      },
+      {
+       "name": "language",
+       "definition": "http://hl7.org/fhir/SearchParameter/Patient-language",
+       "type": "token",
+       "documentation": "Language code (irrespective of use value)"
+      },
+      {
+       "name": "address-country",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-address-country",
+       "type": "string",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A country specified in an address\r\n* [Person](https://hl7.org/fhir/R4/person.html): A country specified in an address\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A country specified in an address\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A country specified in an address\r\n"
+      },
+      {
+       "name": "_list",
+       "type": "string",
+       "documentation": "Search the contents of the resource's data using a list"
+      },
+      {
+       "name": "death-date",
+       "definition": "http://hl7.org/fhir/SearchParameter/Patient-death-date",
+       "type": "date",
+       "documentation": "The date of death has been provided and satisfies this search value"
+      },
+      {
+       "name": "phonetic",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-phonetic",
+       "type": "string",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A portion of either family or given name using some kind of phonetic matching algorithm\r\n* [Person](https://hl7.org/fhir/R4/person.html): A portion of name using some kind of phonetic matching algorithm\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A portion of either family or given name using some kind of phonetic matching algorithm\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A portion of name using some kind of phonetic matching algorithm\r\n"
+      },
+      {
+       "name": "telecom",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-telecom",
+       "type": "token",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): The value in any kind of telecom details of the patient\r\n* [Person](https://hl7.org/fhir/R4/person.html): The value in any kind of contact\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): The value in any kind of contact\r\n* [PractitionerRole](https://hl7.org/fhir/R4/practitionerrole.html): The value in any kind of contact\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): The value in any kind of contact\r\n"
+      },
+      {
+       "name": "address-city",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-address-city",
+       "type": "string",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A city specified in an address\r\n* [Person](https://hl7.org/fhir/R4/person.html): A city specified in an address\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A city specified in an address\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A city specified in an address\r\n"
+      },
+      {
+       "name": "email",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-email",
+       "type": "token",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A value in an email contact\r\n* [Person](https://hl7.org/fhir/R4/person.html): A value in an email contact\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A value in an email contact\r\n* [PractitionerRole](https://hl7.org/fhir/R4/practitionerrole.html): A value in an email contact\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A value in an email contact\r\n"
+      },
+      {
+       "name": "given",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-given",
+       "type": "string",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A portion of the given name of the patient\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A portion of the given name\r\n"
+      },
+      {
+       "name": "identifier",
+       "definition": "http://hl7.org/fhir/SearchParameter/Patient-identifier",
+       "type": "token",
+       "documentation": "A patient identifier"
+      },
+      {
+       "name": "address",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-address",
+       "type": "string",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text\r\n* [Person](https://hl7.org/fhir/R4/person.html): A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text\r\n"
+      },
+      {
+       "name": "general-practitioner",
+       "definition": "http://hl7.org/fhir/SearchParameter/Patient-general-practitioner",
+       "type": "reference",
+       "documentation": "Patient's nominated general practitioner, not the organization that manages the record"
+      },
+      {
+       "name": "_security",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-security",
+       "type": "token",
+       "documentation": "Security Labels applied to this resource"
+      },
+      {
+       "name": "active",
+       "definition": "http://hl7.org/fhir/SearchParameter/Patient-active",
+       "type": "token",
+       "documentation": "Whether the patient record is active"
+      },
+      {
+       "name": "address-postalcode",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-address-postalcode",
+       "type": "string",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A postalCode specified in an address\r\n* [Person](https://hl7.org/fhir/R4/person.html): A postal code specified in an address\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A postalCode specified in an address\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A postal code specified in an address\r\n"
+      },
+      {
+       "name": "_compartmentLastUpdated",
+       "type": "date",
+       "documentation": "Find patients whose compartment data has changed within a given date range"
+      },
+      {
+       "name": "_filter",
+       "type": "string",
+       "documentation": "Search the contents of the resource's data using a filter"
+      },
+      {
+       "name": "_profile",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-profile",
+       "type": "uri",
+       "documentation": "Profiles this resource claims to conform to"
+      },
+      {
+       "name": "phone",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-phone",
+       "type": "token",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A value in a phone contact\r\n* [Person](https://hl7.org/fhir/R4/person.html): A value in a phone contact\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A value in a phone contact\r\n* [PractitionerRole](https://hl7.org/fhir/R4/practitionerrole.html): A value in a phone contact\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A value in a phone contact\r\n"
+      },
+      {
+       "name": "_tag",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-tag",
+       "type": "token",
+       "documentation": "Tags applied to this resource"
+      },
+      {
+       "name": "organization",
+       "definition": "http://hl7.org/fhir/SearchParameter/Patient-organization",
+       "type": "reference",
+       "documentation": "The organization that is the custodian of the patient record"
+      },
+      {
+       "name": "_has",
+       "type": "string",
+       "documentation": "Return resources linked to by the given target"
+      },
+      {
+       "name": "address-use",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-address-use",
+       "type": "token",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A use code specified in an address\r\n* [Person](https://hl7.org/fhir/R4/person.html): A use code specified in an address\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A use code specified in an address\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A use code specified in an address\r\n"
+      },
+      {
+       "name": "name",
+       "definition": "http://hl7.org/fhir/SearchParameter/Patient-name",
+       "type": "string",
+       "documentation": "A server defined search that may match any of the string fields in the HumanName, including family, give, prefix, suffix, suffix, and/or text"
+      },
+      {
+       "name": "_source",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+       "type": "uri",
+       "documentation": "Identifies where the resource comes from"
+      },
+      {
+       "name": "_id",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+       "type": "token",
+       "documentation": "Logical id of this artifact"
+      },
+      {
+       "name": "family",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-family",
+       "type": "string",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A portion of the family name of the patient\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A portion of the family name\r\n"
+      }
+     ],
+     "operation": [
+      {
+       "name": "export",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/GroupPatient-its-export"
+      },
+      {
+       "name": "summary",
+       "definition": "http://hl7.org/fhir/uv/ips/OperationDefinition/summary"
+      },
+      {
+       "name": "validate",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-it-validate"
+      },
+      {
+       "name": "hapi.fhir.undo-merge",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-t-hapi.fhir.undo-merge"
+      },
+      {
+       "name": "meta-delete",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-i-meta-delete",
+       "documentation": "Delete tags, profiles, and/or security labels from a resource"
+      },
+      {
+       "name": "meta-add",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-i-meta-add",
+       "documentation": "Add tags, profiles, and/or security labels to a resource"
+      },
+      {
+       "name": "meta",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-its-meta",
+       "documentation": "Request a list of tags, profiles, and security labels for a specfic resource instance"
+      },
+      {
+       "name": "hapi.fhir.merge",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-t-hapi.fhir.merge"
+      },
+      {
+       "name": "expunge",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-its-expunge"
+      },
+      {
+       "name": "everything",
+       "definition": "http://hl7.org/fhir/OperationDefinition/Patient-everything"
+      },
+      {
+       "name": "diff",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-is-diff",
+       "documentation": "This operation examines two resource versions (can be two versions of the same resource, or two different resources) and generates a FHIR Patch document showing the differences."
+      },
+      {
+       "name": "reindex-dryrun",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-i-reindex-dryrun"
+      },
+      {
+       "name": "reindex",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-is-reindex"
+      },
+      {
+       "name": "graphql",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-is-graphql",
+       "documentation": "This operation invokes a GraphQL expression for fetching an joining a graph of resources, returning them in a custom format."
+      }
+     ]
+    },
+    {
+     "extension": [
+      {
+       "url": "http://hl7api.sourceforge.net/hapi-fhir/res/extdefs.html#resourceCount",
+       "valueDecimal": 3746
+      }
+     ],
+     "type": "Practitioner",
+     "profile": "http://hl7.org/fhir/StructureDefinition/Practitioner",
+     "supportedProfile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner",
+      "https://hl7chile.cl/fhir/ig/clcore/StructureDefinition/CorePrestadorCl"
+     ],
+     "interaction": [
+      {
+       "code": "search-type"
+      },
+      {
+       "code": "update"
+      },
+      {
+       "code": "vread"
+      },
+      {
+       "code": "read"
+      },
+      {
+       "code": "patch"
+      },
+      {
+       "code": "history-type"
+      },
+      {
+       "code": "history-instance"
+      },
+      {
+       "code": "delete"
+      },
+      {
+       "code": "create"
+      }
+     ],
+     "versioning": "versioned-update",
+     "conditionalCreate": true,
+     "conditionalUpdate": true,
+     "conditionalDelete": "multiple",
+     "searchInclude": [
+      "*"
+     ],
+     "searchRevInclude": [
+      "Account:subject",
+      "ActivityDefinition:composed-of",
+      "ActivityDefinition:depends-on",
+      "ActivityDefinition:derived-from",
+      "ActivityDefinition:predecessor",
+      "ActivityDefinition:successor",
+      "AdverseEvent:recorder",
+      "AdverseEvent:subject",
+      "AllergyIntolerance:asserter",
+      "AllergyIntolerance:recorder",
+      "Appointment:actor",
+      "Appointment:practitioner",
+      "Appointment:supporting-info",
+      "AppointmentResponse:actor",
+      "AppointmentResponse:practitioner",
+      "AuditEvent:agent",
+      "AuditEvent:entity",
+      "AuditEvent:source",
+      "Basic:author",
+      "Basic:subject",
+      "CarePlan:performer",
+      "CareTeam:participant",
+      "ChargeItem:enterer",
+      "ChargeItem:performer-actor",
+      "Claim:care-team",
+      "Claim:enterer",
+      "Claim:payee",
+      "Claim:provider",
+      "ClaimResponse:requestor",
+      "ClinicalImpression:assessor",
+      "ClinicalImpression:supporting-info",
+      "Communication:based-on",
+      "Communication:part-of",
+      "Communication:recipient",
+      "Communication:sender",
+      "CommunicationRequest:based-on",
+      "CommunicationRequest:recipient",
+      "CommunicationRequest:requester",
+      "CommunicationRequest:sender",
+      "Composition:attester",
+      "Composition:author",
+      "Composition:entry",
+      "Composition:subject",
+      "Condition:asserter",
+      "Condition:evidence-detail",
+      "Consent:actor",
+      "Consent:consentor",
+      "Consent:data",
+      "Contract:signer",
+      "Contract:subject",
+      "CoverageEligibilityRequest:enterer",
+      "CoverageEligibilityRequest:provider",
+      "CoverageEligibilityResponse:requestor",
+      "DetectedIssue:author",
+      "DetectedIssue:implicated",
+      "DeviceRequest:based-on",
+      "DeviceRequest:performer",
+      "DeviceRequest:prior-request",
+      "DeviceRequest:requester",
+      "DiagnosticReport:performer",
+      "DiagnosticReport:results-interpreter",
+      "DocumentManifest:author",
+      "DocumentManifest:item",
+      "DocumentManifest:recipient",
+      "DocumentManifest:related-ref",
+      "DocumentManifest:subject",
+      "DocumentReference:authenticator",
+      "DocumentReference:author",
+      "DocumentReference:related",
+      "DocumentReference:subject",
+      "Encounter:participant",
+      "Encounter:practitioner",
+      "EpisodeOfCare:care-manager",
+      "EventDefinition:composed-of",
+      "EventDefinition:depends-on",
+      "EventDefinition:derived-from",
+      "EventDefinition:predecessor",
+      "EventDefinition:successor",
+      "Evidence:composed-of",
+      "Evidence:depends-on",
+      "Evidence:derived-from",
+      "Evidence:predecessor",
+      "Evidence:successor",
+      "EvidenceVariable:composed-of",
+      "EvidenceVariable:depends-on",
+      "EvidenceVariable:derived-from",
+      "EvidenceVariable:predecessor",
+      "EvidenceVariable:successor",
+      "ExplanationOfBenefit:care-team",
+      "ExplanationOfBenefit:enterer",
+      "ExplanationOfBenefit:payee",
+      "ExplanationOfBenefit:provider",
+      "Flag:author",
+      "Flag:subject",
+      "Group:managing-entity",
+      "Group:member",
+      "ImagingStudy:interpreter",
+      "ImagingStudy:performer",
+      "ImagingStudy:referrer",
+      "Immunization:performer",
+      "ImmunizationRecommendation:information",
+      "ImplementationGuide:resource",
+      "Invoice:participant",
+      "Library:composed-of",
+      "Library:depends-on",
+      "Library:derived-from",
+      "Library:predecessor",
+      "Library:successor",
+      "Linkage:author",
+      "Linkage:item",
+      "Linkage:source",
+      "List:item",
+      "List:source",
+      "Measure:composed-of",
+      "Measure:depends-on",
+      "Measure:derived-from",
+      "Measure:predecessor",
+      "Measure:successor",
+      "MeasureReport:evaluated-resource",
+      "MeasureReport:reporter",
+      "MeasureReport:subject",
+      "Media:operator",
+      "Media:subject",
+      "MedicationAdministration:performer",
+      "MedicationDispense:performer",
+      "MedicationDispense:receiver",
+      "MedicationDispense:responsibleparty",
+      "MedicationRequest:intended-performer",
+      "MedicationRequest:requester",
+      "MedicationStatement:source",
+      "MessageHeader:author",
+      "MessageHeader:enterer",
+      "MessageHeader:focus",
+      "MessageHeader:receiver",
+      "MessageHeader:responsible",
+      "MessageHeader:sender",
+      "NutritionOrder:provider",
+      "Observation:focus",
+      "Observation:performer",
+      "Patient:general-practitioner",
+      "PaymentNotice:provider",
+      "PaymentNotice:request",
+      "PaymentNotice:response",
+      "PaymentReconciliation:requestor",
+      "Person:link",
+      "Person:practitioner",
+      "PlanDefinition:composed-of",
+      "PlanDefinition:depends-on",
+      "PlanDefinition:derived-from",
+      "PlanDefinition:predecessor",
+      "PlanDefinition:successor",
+      "PractitionerRole:practitioner",
+      "Procedure:performer",
+      "Provenance:agent",
+      "Provenance:entity",
+      "Provenance:target",
+      "QuestionnaireResponse:author",
+      "QuestionnaireResponse:source",
+      "QuestionnaireResponse:subject",
+      "RequestGroup:author",
+      "RequestGroup:instantiates-canonical",
+      "RequestGroup:participant",
+      "ResearchDefinition:composed-of",
+      "ResearchDefinition:depends-on",
+      "ResearchDefinition:derived-from",
+      "ResearchDefinition:predecessor",
+      "ResearchDefinition:successor",
+      "ResearchElementDefinition:composed-of",
+      "ResearchElementDefinition:depends-on",
+      "ResearchElementDefinition:derived-from",
+      "ResearchElementDefinition:predecessor",
+      "ResearchElementDefinition:successor",
+      "ResearchStudy:principalinvestigator",
+      "RiskAssessment:performer",
+      "Schedule:actor",
+      "ServiceRequest:performer",
+      "ServiceRequest:requester",
+      "Specimen:collector",
+      "SupplyDelivery:receiver",
+      "SupplyDelivery:supplier",
+      "SupplyRequest:requester",
+      "Task:based-on",
+      "Task:focus",
+      "Task:owner",
+      "Task:requester",
+      "Task:subject",
+      "VerificationResult:target",
+      "VisionPrescription:prescriber"
+     ],
+     "searchParam": [
+      {
+       "name": "_language",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-language",
+       "type": "token",
+       "documentation": "Language of the resource content"
+      },
+      {
+       "name": "address-state",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-address-state",
+       "type": "string",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A state specified in an address\r\n* [Person](https://hl7.org/fhir/R4/person.html): A state specified in an address\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A state specified in an address\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A state specified in an address\r\n"
+      },
+      {
+       "name": "gender",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-gender",
+       "type": "token",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): Gender of the patient\r\n* [Person](https://hl7.org/fhir/R4/person.html): The gender of the person\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): Gender of the practitioner\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): Gender of the related person\r\n"
+      },
+      {
+       "name": "_lastUpdated",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+       "type": "date",
+       "documentation": "When the resource version last changed"
+      },
+      {
+       "name": "address-country",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-address-country",
+       "type": "string",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A country specified in an address\r\n* [Person](https://hl7.org/fhir/R4/person.html): A country specified in an address\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A country specified in an address\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A country specified in an address\r\n"
+      },
+      {
+       "name": "_list",
+       "type": "string",
+       "documentation": "Search the contents of the resource's data using a list"
+      },
+      {
+       "name": "phonetic",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-phonetic",
+       "type": "string",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A portion of either family or given name using some kind of phonetic matching algorithm\r\n* [Person](https://hl7.org/fhir/R4/person.html): A portion of name using some kind of phonetic matching algorithm\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A portion of either family or given name using some kind of phonetic matching algorithm\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A portion of name using some kind of phonetic matching algorithm\r\n"
+      },
+      {
+       "name": "telecom",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-telecom",
+       "type": "token",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): The value in any kind of telecom details of the patient\r\n* [Person](https://hl7.org/fhir/R4/person.html): The value in any kind of contact\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): The value in any kind of contact\r\n* [PractitionerRole](https://hl7.org/fhir/R4/practitionerrole.html): The value in any kind of contact\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): The value in any kind of contact\r\n"
+      },
+      {
+       "name": "address-city",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-address-city",
+       "type": "string",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A city specified in an address\r\n* [Person](https://hl7.org/fhir/R4/person.html): A city specified in an address\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A city specified in an address\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A city specified in an address\r\n"
+      },
+      {
+       "name": "communication",
+       "definition": "http://hl7.org/fhir/SearchParameter/Practitioner-communication",
+       "type": "token",
+       "documentation": "One of the languages that the practitioner can communicate with"
+      },
+      {
+       "name": "email",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-email",
+       "type": "token",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A value in an email contact\r\n* [Person](https://hl7.org/fhir/R4/person.html): A value in an email contact\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A value in an email contact\r\n* [PractitionerRole](https://hl7.org/fhir/R4/practitionerrole.html): A value in an email contact\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A value in an email contact\r\n"
+      },
+      {
+       "name": "given",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-given",
+       "type": "string",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A portion of the given name of the patient\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A portion of the given name\r\n"
+      },
+      {
+       "name": "identifier",
+       "definition": "http://hl7.org/fhir/SearchParameter/Practitioner-identifier",
+       "type": "token",
+       "documentation": "A practitioner's Identifier"
+      },
+      {
+       "name": "address",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-address",
+       "type": "string",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text\r\n* [Person](https://hl7.org/fhir/R4/person.html): A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text\r\n"
+      },
+      {
+       "name": "_security",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-security",
+       "type": "token",
+       "documentation": "Security Labels applied to this resource"
+      },
+      {
+       "name": "active",
+       "definition": "http://hl7.org/fhir/SearchParameter/Practitioner-active",
+       "type": "token",
+       "documentation": "Whether the practitioner record is active"
+      },
+      {
+       "name": "address-postalcode",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-address-postalcode",
+       "type": "string",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A postalCode specified in an address\r\n* [Person](https://hl7.org/fhir/R4/person.html): A postal code specified in an address\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A postalCode specified in an address\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A postal code specified in an address\r\n"
+      },
+      {
+       "name": "_filter",
+       "type": "string",
+       "documentation": "Search the contents of the resource's data using a filter"
+      },
+      {
+       "name": "_profile",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-profile",
+       "type": "uri",
+       "documentation": "Profiles this resource claims to conform to"
+      },
+      {
+       "name": "phone",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-phone",
+       "type": "token",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A value in a phone contact\r\n* [Person](https://hl7.org/fhir/R4/person.html): A value in a phone contact\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A value in a phone contact\r\n* [PractitionerRole](https://hl7.org/fhir/R4/practitionerrole.html): A value in a phone contact\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A value in a phone contact\r\n"
+      },
+      {
+       "name": "_tag",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-tag",
+       "type": "token",
+       "documentation": "Tags applied to this resource"
+      },
+      {
+       "name": "_has",
+       "type": "string",
+       "documentation": "Return resources linked to by the given target"
+      },
+      {
+       "name": "address-use",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-address-use",
+       "type": "token",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A use code specified in an address\r\n* [Person](https://hl7.org/fhir/R4/person.html): A use code specified in an address\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A use code specified in an address\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A use code specified in an address\r\n"
+      },
+      {
+       "name": "name",
+       "definition": "http://hl7.org/fhir/SearchParameter/Practitioner-name",
+       "type": "string",
+       "documentation": "A server defined search that may match any of the string fields in the HumanName, including family, give, prefix, suffix, suffix, and/or text"
+      },
+      {
+       "name": "_source",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+       "type": "uri",
+       "documentation": "Identifies where the resource comes from"
+      },
+      {
+       "name": "_id",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+       "type": "token",
+       "documentation": "Logical id of this artifact"
+      },
+      {
+       "name": "family",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-family",
+       "type": "string",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A portion of the family name of the patient\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A portion of the family name\r\n"
+      }
+     ],
+     "operation": [
+      {
+       "name": "validate",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-it-validate"
+      },
+      {
+       "name": "hapi.fhir.undo-merge",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-t-hapi.fhir.undo-merge"
+      },
+      {
+       "name": "meta-delete",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-i-meta-delete",
+       "documentation": "Delete tags, profiles, and/or security labels from a resource"
+      },
+      {
+       "name": "meta-add",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-i-meta-add",
+       "documentation": "Add tags, profiles, and/or security labels to a resource"
+      },
+      {
+       "name": "meta",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-its-meta",
+       "documentation": "Request a list of tags, profiles, and security labels for a specfic resource instance"
+      },
+      {
+       "name": "hapi.fhir.merge",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-t-hapi.fhir.merge"
+      },
+      {
+       "name": "expunge",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-its-expunge"
+      },
+      {
+       "name": "diff",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-is-diff",
+       "documentation": "This operation examines two resource versions (can be two versions of the same resource, or two different resources) and generates a FHIR Patch document showing the differences."
+      },
+      {
+       "name": "reindex-dryrun",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-i-reindex-dryrun"
+      },
+      {
+       "name": "reindex",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-is-reindex"
+      },
+      {
+       "name": "graphql",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-is-graphql",
+       "documentation": "This operation invokes a GraphQL expression for fetching an joining a graph of resources, returning them in a custom format."
+      }
+     ]
+    },
+    {
+     "extension": [
+      {
+       "url": "http://hl7api.sourceforge.net/hapi-fhir/res/extdefs.html#resourceCount",
+       "valueDecimal": 144
+      }
+     ],
+     "type": "RelatedPerson",
+     "profile": "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
+     "supportedProfile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson",
+      "https://demo-clinic.test/fhir/ltc/StructureDefinition/ltc-caregiver",
+      "https://demo-clinic.test/fhir/ltc/StructureDefinition/ltc-caregiver-a2t10141655",
+      "https://demo-clinic.test/fhir/ltc/StructureDefinition/ltc-caregiver-a2test"
+     ],
+     "interaction": [
+      {
+       "code": "search-type"
+      },
+      {
+       "code": "update"
+      },
+      {
+       "code": "vread"
+      },
+      {
+       "code": "read"
+      },
+      {
+       "code": "patch"
+      },
+      {
+       "code": "history-type"
+      },
+      {
+       "code": "history-instance"
+      },
+      {
+       "code": "delete"
+      },
+      {
+       "code": "create"
+      }
+     ],
+     "versioning": "versioned-update",
+     "conditionalCreate": true,
+     "conditionalUpdate": true,
+     "conditionalDelete": "multiple",
+     "searchInclude": [
+      "*",
+      "RelatedPerson:patient"
+     ],
+     "searchRevInclude": [
+      "ActivityDefinition:composed-of",
+      "ActivityDefinition:depends-on",
+      "ActivityDefinition:derived-from",
+      "ActivityDefinition:predecessor",
+      "ActivityDefinition:successor",
+      "AdverseEvent:recorder",
+      "AdverseEvent:subject",
+      "AllergyIntolerance:asserter",
+      "AllergyIntolerance:recorder",
+      "Appointment:actor",
+      "Appointment:supporting-info",
+      "AppointmentResponse:actor",
+      "AuditEvent:agent",
+      "AuditEvent:entity",
+      "AuditEvent:source",
+      "Basic:author",
+      "Basic:subject",
+      "CarePlan:performer",
+      "CareTeam:participant",
+      "ChargeItem:enterer",
+      "ChargeItem:performer-actor",
+      "Claim:payee",
+      "ClinicalImpression:supporting-info",
+      "Communication:based-on",
+      "Communication:part-of",
+      "Communication:recipient",
+      "Communication:sender",
+      "CommunicationRequest:based-on",
+      "CommunicationRequest:recipient",
+      "CommunicationRequest:requester",
+      "CommunicationRequest:sender",
+      "Composition:attester",
+      "Composition:author",
+      "Composition:entry",
+      "Composition:subject",
+      "Condition:asserter",
+      "Condition:evidence-detail",
+      "Consent:actor",
+      "Consent:consentor",
+      "Consent:data",
+      "Contract:signer",
+      "Contract:subject",
+      "Coverage:payor",
+      "Coverage:policy-holder",
+      "Coverage:subscriber",
+      "DetectedIssue:implicated",
+      "DeviceRequest:based-on",
+      "DeviceRequest:performer",
+      "DeviceRequest:prior-request",
+      "DocumentManifest:author",
+      "DocumentManifest:item",
+      "DocumentManifest:recipient",
+      "DocumentManifest:related-ref",
+      "DocumentReference:author",
+      "DocumentReference:related",
+      "Encounter:participant",
+      "EventDefinition:composed-of",
+      "EventDefinition:depends-on",
+      "EventDefinition:derived-from",
+      "EventDefinition:predecessor",
+      "EventDefinition:successor",
+      "Evidence:composed-of",
+      "Evidence:depends-on",
+      "Evidence:derived-from",
+      "Evidence:predecessor",
+      "Evidence:successor",
+      "EvidenceVariable:composed-of",
+      "EvidenceVariable:depends-on",
+      "EvidenceVariable:derived-from",
+      "EvidenceVariable:predecessor",
+      "EvidenceVariable:successor",
+      "ExplanationOfBenefit:payee",
+      "Group:managing-entity",
+      "ImagingStudy:performer",
+      "ImmunizationRecommendation:information",
+      "ImplementationGuide:resource",
+      "Invoice:participant",
+      "Invoice:recipient",
+      "Library:composed-of",
+      "Library:depends-on",
+      "Library:derived-from",
+      "Library:predecessor",
+      "Library:successor",
+      "Linkage:item",
+      "Linkage:source",
+      "List:item",
+      "Measure:composed-of",
+      "Measure:depends-on",
+      "Measure:derived-from",
+      "Measure:predecessor",
+      "Measure:successor",
+      "MeasureReport:evaluated-resource",
+      "MeasureReport:subject",
+      "Media:operator",
+      "MedicationAdministration:performer",
+      "MedicationDispense:performer",
+      "MedicationRequest:intended-performer",
+      "MedicationRequest:requester",
+      "MedicationStatement:source",
+      "MessageHeader:focus",
+      "Observation:focus",
+      "Observation:performer",
+      "Patient:link",
+      "PaymentNotice:request",
+      "PaymentNotice:response",
+      "Person:link",
+      "Person:relatedperson",
+      "PlanDefinition:composed-of",
+      "PlanDefinition:depends-on",
+      "PlanDefinition:derived-from",
+      "PlanDefinition:predecessor",
+      "PlanDefinition:successor",
+      "Procedure:performer",
+      "Provenance:agent",
+      "Provenance:entity",
+      "Provenance:target",
+      "QuestionnaireResponse:author",
+      "QuestionnaireResponse:source",
+      "QuestionnaireResponse:subject",
+      "RequestGroup:instantiates-canonical",
+      "RequestGroup:participant",
+      "ResearchDefinition:composed-of",
+      "ResearchDefinition:depends-on",
+      "ResearchDefinition:derived-from",
+      "ResearchDefinition:predecessor",
+      "ResearchDefinition:successor",
+      "ResearchElementDefinition:composed-of",
+      "ResearchElementDefinition:depends-on",
+      "ResearchElementDefinition:derived-from",
+      "ResearchElementDefinition:predecessor",
+      "ResearchElementDefinition:successor",
+      "Schedule:actor",
+      "ServiceRequest:performer",
+      "ServiceRequest:requester",
+      "SupplyRequest:requester",
+      "Task:based-on",
+      "Task:focus",
+      "Task:owner",
+      "Task:requester",
+      "Task:subject",
+      "VerificationResult:target"
+     ],
+     "searchParam": [
+      {
+       "name": "_language",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-language",
+       "type": "token",
+       "documentation": "Language of the resource content"
+      },
+      {
+       "name": "birthdate",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-birthdate",
+       "type": "date",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): The patient's date of birth\r\n* [Person](https://hl7.org/fhir/R4/person.html): The person's date of birth\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): The Related Person's date of birth\r\n"
+      },
+      {
+       "name": "address-state",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-address-state",
+       "type": "string",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A state specified in an address\r\n* [Person](https://hl7.org/fhir/R4/person.html): A state specified in an address\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A state specified in an address\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A state specified in an address\r\n"
+      },
+      {
+       "name": "gender",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-gender",
+       "type": "token",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): Gender of the patient\r\n* [Person](https://hl7.org/fhir/R4/person.html): The gender of the person\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): Gender of the practitioner\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): Gender of the related person\r\n"
+      },
+      {
+       "name": "_lastUpdated",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+       "type": "date",
+       "documentation": "When the resource version last changed"
+      },
+      {
+       "name": "address-country",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-address-country",
+       "type": "string",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A country specified in an address\r\n* [Person](https://hl7.org/fhir/R4/person.html): A country specified in an address\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A country specified in an address\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A country specified in an address\r\n"
+      },
+      {
+       "name": "_list",
+       "type": "string",
+       "documentation": "Search the contents of the resource's data using a list"
+      },
+      {
+       "name": "phonetic",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-phonetic",
+       "type": "string",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A portion of either family or given name using some kind of phonetic matching algorithm\r\n* [Person](https://hl7.org/fhir/R4/person.html): A portion of name using some kind of phonetic matching algorithm\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A portion of either family or given name using some kind of phonetic matching algorithm\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A portion of name using some kind of phonetic matching algorithm\r\n"
+      },
+      {
+       "name": "patient",
+       "definition": "http://hl7.org/fhir/SearchParameter/RelatedPerson-patient",
+       "type": "reference",
+       "documentation": "The patient this related person is related to"
+      },
+      {
+       "name": "telecom",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-telecom",
+       "type": "token",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): The value in any kind of telecom details of the patient\r\n* [Person](https://hl7.org/fhir/R4/person.html): The value in any kind of contact\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): The value in any kind of contact\r\n* [PractitionerRole](https://hl7.org/fhir/R4/practitionerrole.html): The value in any kind of contact\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): The value in any kind of contact\r\n"
+      },
+      {
+       "name": "address-city",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-address-city",
+       "type": "string",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A city specified in an address\r\n* [Person](https://hl7.org/fhir/R4/person.html): A city specified in an address\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A city specified in an address\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A city specified in an address\r\n"
+      },
+      {
+       "name": "relationship",
+       "definition": "http://hl7.org/fhir/SearchParameter/RelatedPerson-relationship",
+       "type": "token",
+       "documentation": "The relationship between the patient and the relatedperson"
+      },
+      {
+       "name": "email",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-email",
+       "type": "token",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A value in an email contact\r\n* [Person](https://hl7.org/fhir/R4/person.html): A value in an email contact\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A value in an email contact\r\n* [PractitionerRole](https://hl7.org/fhir/R4/practitionerrole.html): A value in an email contact\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A value in an email contact\r\n"
+      },
+      {
+       "name": "identifier",
+       "definition": "http://hl7.org/fhir/SearchParameter/RelatedPerson-identifier",
+       "type": "token",
+       "documentation": "An Identifier of the RelatedPerson"
+      },
+      {
+       "name": "address",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-address",
+       "type": "string",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text\r\n* [Person](https://hl7.org/fhir/R4/person.html): A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text\r\n"
+      },
+      {
+       "name": "_security",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-security",
+       "type": "token",
+       "documentation": "Security Labels applied to this resource"
+      },
+      {
+       "name": "active",
+       "definition": "http://hl7.org/fhir/SearchParameter/RelatedPerson-active",
+       "type": "token",
+       "documentation": "Indicates if the related person record is active"
+      },
+      {
+       "name": "address-postalcode",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-address-postalcode",
+       "type": "string",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A postalCode specified in an address\r\n* [Person](https://hl7.org/fhir/R4/person.html): A postal code specified in an address\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A postalCode specified in an address\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A postal code specified in an address\r\n"
+      },
+      {
+       "name": "_filter",
+       "type": "string",
+       "documentation": "Search the contents of the resource's data using a filter"
+      },
+      {
+       "name": "_profile",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-profile",
+       "type": "uri",
+       "documentation": "Profiles this resource claims to conform to"
+      },
+      {
+       "name": "phone",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-phone",
+       "type": "token",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A value in a phone contact\r\n* [Person](https://hl7.org/fhir/R4/person.html): A value in a phone contact\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A value in a phone contact\r\n* [PractitionerRole](https://hl7.org/fhir/R4/practitionerrole.html): A value in a phone contact\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A value in a phone contact\r\n"
+      },
+      {
+       "name": "_tag",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-tag",
+       "type": "token",
+       "documentation": "Tags applied to this resource"
+      },
+      {
+       "name": "_has",
+       "type": "string",
+       "documentation": "Return resources linked to by the given target"
+      },
+      {
+       "name": "address-use",
+       "definition": "http://hl7.org/fhir/SearchParameter/individual-address-use",
+       "type": "token",
+       "documentation": "Multiple Resources: \r\n\r\n* [Patient](https://hl7.org/fhir/R4/patient.html): A use code specified in an address\r\n* [Person](https://hl7.org/fhir/R4/person.html): A use code specified in an address\r\n* [Practitioner](https://hl7.org/fhir/R4/practitioner.html): A use code specified in an address\r\n* [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html): A use code specified in an address\r\n"
+      },
+      {
+       "name": "name",
+       "definition": "http://hl7.org/fhir/SearchParameter/RelatedPerson-name",
+       "type": "string",
+       "documentation": "A server defined search that may match any of the string fields in the HumanName, including family, give, prefix, suffix, suffix, and/or text"
+      },
+      {
+       "name": "_source",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-source",
+       "type": "uri",
+       "documentation": "Identifies where the resource comes from"
+      },
+      {
+       "name": "_id",
+       "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+       "type": "token",
+       "documentation": "Logical id of this artifact"
+      }
+     ],
+     "operation": [
+      {
+       "name": "validate",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-it-validate"
+      },
+      {
+       "name": "hapi.fhir.undo-merge",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-t-hapi.fhir.undo-merge"
+      },
+      {
+       "name": "meta-delete",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-i-meta-delete",
+       "documentation": "Delete tags, profiles, and/or security labels from a resource"
+      },
+      {
+       "name": "meta-add",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-i-meta-add",
+       "documentation": "Add tags, profiles, and/or security labels to a resource"
+      },
+      {
+       "name": "meta",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-its-meta",
+       "documentation": "Request a list of tags, profiles, and security labels for a specfic resource instance"
+      },
+      {
+       "name": "hapi.fhir.merge",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-t-hapi.fhir.merge"
+      },
+      {
+       "name": "expunge",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Multi-its-expunge"
+      },
+      {
+       "name": "diff",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-is-diff",
+       "documentation": "This operation examines two resource versions (can be two versions of the same resource, or two different resources) and generates a FHIR Patch document showing the differences."
+      },
+      {
+       "name": "reindex-dryrun",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-i-reindex-dryrun"
+      },
+      {
+       "name": "reindex",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-is-reindex"
+      },
+      {
+       "name": "graphql",
+       "definition": "https://hapi.fhir.org/baseR4/OperationDefinition/Global-is-graphql",
+       "documentation": "This operation invokes a GraphQL expression for fetching an joining a graph of resources, returning them in a custom format."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "_note": "Trimmed recording: top-level identity plus rest.resource entries for CARIN-relevant types only."
+}

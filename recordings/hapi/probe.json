@@ -1,0 +1,94 @@
+{
+  "payer": "hapi",
+  "source": "live",
+  "recordedAt": "2026-11-20T21:42:52.902Z",
+  "counts": {
+    "ExplanationOfBenefit": 200,
+    "Patient": 50,
+    "Coverage": 6
+  },
+  "pages": 4,
+  "http": {
+    "requests": 71,
+    "retries": 0,
+    "throttled": 0,
+    "statuses": {
+      "200": 66,
+      "400": 5
+    }
+  },
+  "profiles": {
+    "declared": false,
+    "eobTotal": 200,
+    "eobWithSpecProfile": 52
+  },
+  "searchChecks": [
+    {
+      "param": "patient",
+      "claimed": true,
+      "query": "patient=Patient/GPX-SYN-0000000279-0",
+      "verdict": "honored",
+      "detail": "10/10 match; negative control returned 0"
+    },
+    {
+      "param": "_lastUpdated",
+      "claimed": true,
+      "query": "_lastUpdated=ge2026-10-12T18%3A18%3A04.685-04%3A00",
+      "verdict": "honored",
+      "detail": "20/20 match; negative control returned 0"
+    },
+    {
+      "param": "type",
+      "claimed": false,
+      "query": "type=http%3A%2F%2Fterminology.hl7.org%2FCodeSystem%2Fclaim-type%7Cprofessional",
+      "verdict": "rejected",
+      "detail": "HTTP 400"
+    },
+    {
+      "param": "identifier",
+      "claimed": true,
+      "query": "identifier=https%3A%2F%2Fparkerapex.com%2Fatlas%2Fclaim%7CCLM-20180714-PCP18",
+      "verdict": "honored",
+      "detail": "1/1 match; negative control returned 0"
+    },
+    {
+      "param": "service-date",
+      "claimed": false,
+      "query": "service-date=2018-07-14",
+      "verdict": "rejected",
+      "detail": "HTTP 400",
+      "tried": [
+        "spec=rejected",
+        "prefixed-range=rejected"
+      ]
+    },
+    {
+      "param": "service-start-date",
+      "claimed": false,
+      "query": "service-start-date=ge2026-10-12",
+      "verdict": "rejected",
+      "detail": "HTTP 400"
+    },
+    {
+      "param": "billable-period-start",
+      "claimed": false,
+      "query": "billable-period-start=ge2026-10-12",
+      "verdict": "rejected",
+      "detail": "HTTP 400"
+    }
+  ],
+  "suggestions": [
+    "Data is CARIN-profiled (52/200 claims) although the CapabilityStatement doesn't say so: trust the data, not the claim.",
+    "No 429s in 71 requests at 2 req/s; the default held (not proof of the payer's real limit)."
+  ],
+  "suggestedOverrides": {
+    "clientSideFilter": [
+      "type",
+      "service-date",
+      "service-start-date",
+      "billable-period-start"
+    ]
+  },
+  "scrubbedPatients": 4,
+  "scrubbedUnresolvedClaims": 101
+}

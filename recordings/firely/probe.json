@@ -1,0 +1,97 @@
+{
+  "payer": "firely",
+  "source": "live",
+  "recordedAt": "2026-11-20T21:43:29.552Z",
+  "counts": {
+    "ExplanationOfBenefit": 200,
+    "Patient": 50,
+    "Coverage": 4
+  },
+  "pages": 4,
+  "http": {
+    "requests": 74,
+    "retries": 0,
+    "throttled": 0,
+    "statuses": {
+      "200": 74
+    }
+  },
+  "profiles": {
+    "declared": false,
+    "eobTotal": 200,
+    "eobWithSpecProfile": 33
+  },
+  "searchChecks": [
+    {
+      "param": "patient",
+      "claimed": true,
+      "query": "patient=Patient/ehr-b-p100",
+      "verdict": "honored",
+      "detail": "1/1 match; negative control returned 0"
+    },
+    {
+      "param": "_lastUpdated",
+      "claimed": true,
+      "query": "_lastUpdated=ge2026-11-13T18%3A36%3A19.4873149%2B00%3A00",
+      "verdict": "honored",
+      "detail": "20/20 match; negative control returned 0"
+    },
+    {
+      "param": "type",
+      "claimed": false,
+      "query": "type=http%3A%2F%2Fterminology.hl7.org%2FCodeSystem%2Fclaim-type%7Cinstitutional",
+      "verdict": "ignored",
+      "detail": "negative control (type=http%3A%2F%2Fterminology.hl7.org%2FCodeSystem%2Fclaim-type%7Cpayer-onboard-no-such-value) returned 20 claims; the filter is dropped"
+    },
+    {
+      "param": "identifier",
+      "claimed": true,
+      "query": "identifier=http%3A%2F%2Fwww.test.com%7CEOB-Professional-1-50LineItem",
+      "verdict": "honored",
+      "detail": "3/3 match; negative control returned 0"
+    },
+    {
+      "param": "service-date",
+      "claimed": false,
+      "query": "service-date=2026-11-13",
+      "verdict": "ignored",
+      "detail": "negative control (service-date=1900-01-01) returned 20 claims; the filter is dropped",
+      "tried": [
+        "spec=ignored",
+        "prefixed-range=ignored"
+      ]
+    },
+    {
+      "param": "service-start-date",
+      "claimed": false,
+      "query": "service-start-date=ge2026-11-13",
+      "verdict": "ignored",
+      "detail": "negative control (service-start-date=ge2999-01-01) returned 20 claims; the filter is dropped"
+    },
+    {
+      "param": "billable-period-start",
+      "claimed": false,
+      "query": "billable-period-start=ge2026-11-13",
+      "verdict": "ignored",
+      "detail": "negative control (billable-period-start=ge2999-01-01) returned 20 claims; the filter is dropped"
+    }
+  ],
+  "suggestions": [
+    "Data is CARIN-profiled (33/200 claims) although the CapabilityStatement doesn't say so: trust the data, not the claim.",
+    "Server silently ignores type: never rely on it for filtering.",
+    "Server silently ignores service-date: never rely on it for filtering.",
+    "Server silently ignores service-start-date: never rely on it for filtering.",
+    "Server silently ignores billable-period-start: never rely on it for filtering.",
+    "No 429s in 74 requests at 2 req/s; the default held (not proof of the payer's real limit)."
+  ],
+  "suggestedOverrides": {
+    "clientSideFilter": [
+      "type",
+      "service-date",
+      "service-start-date",
+      "billable-period-start"
+    ]
+  },
+  "scrubbedPatients": 3,
+  "scrubbedUnresolvedClaims": 150
+}

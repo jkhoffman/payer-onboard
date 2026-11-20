@@ -1,0 +1,7 @@
+# HAPI FHIR server.
+vendor:
+  id: hapi
+  match:
+    softwareName: "^HAPI FHIR"
+  notes:
+    - The public hapi.fhir.org instance accepts writes from anyone, so data can change between runs. Score recorded fixtures, not live reads.

@@ -1,0 +1,122 @@
+{
+  "payer": "cms",
+  "source": "live",
+  "sourceNote": "1 authorized synthetic member(s)",
+  "recordedAt": "2026-11-20T21:42:18.957Z",
+  "counts": {
+    "ExplanationOfBenefit": 155,
+    "Patient": 1,
+    "Coverage": 3
+  },
+  "pages": 4,
+  "http": {
+    "requests": 29,
+    "retries": 0,
+    "throttled": 0,
+    "statuses": {
+      "200": 23,
+      "400": 4,
+      "403": 2
+    }
+  },
+  "profiles": {
+    "declared": false,
+    "eobTotal": 155,
+    "eobWithSpecProfile": 155
+  },
+  "searchChecks": [
+    {
+      "param": "patient",
+      "claimed": true,
+      "query": "patient=-10000010254618",
+      "variant": "bare-id",
+      "verdict": "unverified",
+      "detail": "20/20 match, but negative control returned HTTP 403 and total unchanged (155 of 155); cannot tell filtering from no filtering",
+      "tried": [
+        "spec=rejected",
+        "bare-id=unverified"
+      ]
+    },
+    {
+      "param": "_lastUpdated",
+      "claimed": true,
+      "query": "_lastUpdated=ge2023-06-14T16%3A32%3A51.427%2B00%3A00",
+      "verdict": "honored",
+      "detail": "20/20 match; negative control returned 0"
+    },
+    {
+      "param": "type",
+      "claimed": true,
+      "query": "type=inpatient",
+      "variant": "code-only:https://bluebutton.cms.gov/resources/codesystem/eob-type",
+      "verdict": "honored",
+      "detail": "1/1 match; negative control returned HTTP 400, but the server total fell from 155 to 1",
+      "tried": [
+        "spec=rejected",
+        "code-only:https://bluebutton.cms.gov/resources/variables/nch_clm_type_cd=rejected",
+        "code-only:https://bluebutton.cms.gov/resources/codesystem/eob-type=honored"
+      ]
+    },
+    {
+      "param": "identifier",
+      "claimed": false,
+      "query": "identifier=https%3A%2F%2Fbluebutton.cms.gov%2Fresources%2Fvariables%2Fclm_id%7C-10000930037831",
+      "verdict": "ignored",
+      "detail": "negative control (identifier=urn%3Apayer-onboard%7Cpayer-onboard-no-such-value) returned 20 claims; the filter is dropped",
+      "tried": [
+        "spec=ignored",
+        "value-only=ignored"
+      ]
+    },
+    {
+      "param": "service-date",
+      "claimed": true,
+      "query": "service-date=ge2015-03-25&service-date=le2015-03-25",
+      "variant": "prefixed-range",
+      "verdict": "honored",
+      "detail": "3/3 match; negative control returned 0",
+      "tried": [
+        "spec=rejected",
+        "prefixed-range=honored"
+      ]
+    },
+    {
+      "param": "service-start-date",
+      "claimed": false,
+      "query": "service-start-date=ge2019-04-28",
+      "verdict": "ignored",
+      "detail": "negative control (service-start-date=ge2999-01-01) returned 20 claims; the filter is dropped"
+    },
+    {
+      "param": "billable-period-start",
+      "claimed": false,
+      "query": "billable-period-start=ge2019-04-28",
+      "verdict": "ignored",
+      "detail": "negative control (billable-period-start=ge2999-01-01) returned 20 claims; the filter is dropped"
+    }
+  ],
+  "suggestions": [
+    "Data is CARIN-profiled (155/155 claims) although the CapabilityStatement doesn't say so: trust the data, not the claim.",
+    "patient is accepted (as bare-id, suggested as config) but its filtering is unverified: test with a token that sees more than one member.",
+    "type works only in an alternative form (code-only:https://bluebutton.cms.gov/resources/codesystem/eob-type); suggested as config.",
+    "Server silently ignores identifier: never rely on it for filtering.",
+    "service-date works only in an alternative form (prefixed-range); suggested as config.",
+    "Server silently ignores service-start-date: never rely on it for filtering.",
+    "Server silently ignores billable-period-start: never rely on it for filtering.",
+    "No 429s in 29 requests at 2 req/s; the default held (not proof of the payer's real limit)."
+  ],
+  "suggestedOverrides": {
+    "searchVariants": {
+      "ExplanationOfBenefit": {
+        "patient": "bare-id",
+        "type": "code-only:https://bluebutton.cms.gov/resources/codesystem/eob-type",
+        "service-date": "prefixed-range"
+      }
+    },
+    "clientSideFilter": [
+      "identifier",
+      "service-start-date",
+      "billable-period-start"
+    ]
+  }
+}

@@ -1,0 +1,527 @@
+{
+  "meta": {
+    "generatedAt": "2026-11-20",
+    "sources": {
+      "cms": "CMS Blue Button 2.0 (sandbox) · live (1 authorized synthetic member(s)) · recorded 2026-11-20",
+      "firely": "Firely public test server · live · recorded 2026-11-20",
+      "hapi": "HAPI public test server · live · recorded 2026-11-20"
+    },
+    "duplicates": {
+      "firely": 18
+    },
+    "review": {
+      "firely": 2
+    }
+  },
+  "scores": [
+    {
+      "payer": "cms",
+      "claims": 155,
+      "raw": {
+        "overall": 88.9,
+        "grade": "B",
+        "dimensions": {
+          "Availability": 89.7,
+          "Accuracy": 88.3,
+          "Conformity": 66.5,
+          "Plausibility": 100,
+          "Uniqueness": 100
+        }
+      },
+      "normalized": {
+        "overall": 93.3,
+        "grade": "A",
+        "dimensions": {
+          "Availability": 92.1,
+          "Accuracy": 88.3,
+          "Conformity": 86.3,
+          "Plausibility": 100,
+          "Uniqueness": 100
+        }
+      },
+      "gainedBy": {
+        "duplicate-coding": 3.4,
+        "vendor-code-system-alias": 0.6,
+        "vendor-amount-alias": 0.5
+      },
+      "checks": [
+        {
+          "id": "service-date",
+          "dimension": "Availability",
+          "label": "Service date present",
+          "applicable": 155,
+          "rawPass": 155,
+          "normPass": 155
+        },
+        {
+          "id": "billed-amount",
+          "dimension": "Availability",
+          "label": "Billed amount present",
+          "applicable": 155,
+          "rawPass": 85,
+          "normPass": 104
+        },
+        {
+          "id": "claim-type",
+          "dimension": "Availability",
+          "label": "CARIN claim type present",
+          "applicable": 155,
+          "rawPass": 155,
+          "normPass": 155
+        },
+        {
+          "id": "claim-id",
+          "dimension": "Availability",
+          "label": "CARIN unique claim id present",
+          "applicable": 155,
+          "rawPass": 155,
+          "normPass": 155
+        },
+        {
+          "id": "provider",
+          "dimension": "Availability",
+          "label": "Billing provider NPI present",
+          "applicable": 155,
+          "rawPass": 145,
+          "normPass": 145
+        },
+        {
+          "id": "npi-valid",
+          "dimension": "Accuracy",
+          "label": "Provider NPI passes check digit",
+          "applicable": 145,
+          "rawPass": 94,
+          "normPass": 94
+        },
+        {
+          "id": "dates-are-dates",
+          "dimension": "Accuracy",
+          "label": "Service dates are day-precision (consistency)",
+          "applicable": 155,
+          "rawPass": 155,
+          "normPass": 155
+        },
+        {
+          "id": "billed-not-sentinel",
+          "dimension": "Accuracy",
+          "label": "Billed amount is not a sentinel (999…)",
+          "applicable": 104,
+          "rawPass": 104,
+          "normPass": 104
+        },
+        {
+          "id": "code-systems",
+          "dimension": "Conformity",
+          "label": "Codes use canonical code systems",
+          "applicable": 155,
+          "rawPass": 51,
+          "normPass": 70
+        },
+        {
+          "id": "no-duplicate-codings",
+          "dimension": "Conformity",
+          "label": "No code listed twice under two systems",
+          "applicable": 155,
+          "rawPass": 51,
+          "normPass": 155
+        },
+        {
+          "id": "adjudication-coded",
+          "dimension": "Conformity",
+          "label": "Amount categories carry a code system",
+          "applicable": 155,
+          "rawPass": 155,
+          "normPass": 155
+        },
+        {
+          "id": "carin-profile",
+          "dimension": "Conformity",
+          "label": "Claim declares a CARIN profile",
+          "applicable": 155,
+          "rawPass": 155,
+          "normPass": 155
+        },
+        {
+          "id": "period-order",
+          "dimension": "Plausibility",
+          "label": "Service end is not before start",
+          "applicable": 155,
+          "rawPass": 155,
+          "normPass": 155
+        },
+        {
+          "id": "not-future",
+          "dimension": "Plausibility",
+          "label": "Service date is not in the future",
+          "applicable": 155,
+          "rawPass": 155,
+          "normPass": 155
+        },
+        {
+          "id": "paid-le-billed",
+          "dimension": "Plausibility",
+          "label": "Paid does not exceed billed",
+          "applicable": 0,
+          "rawPass": 0,
+          "normPass": 0
+        },
+        {
+          "id": "unique",
+          "dimension": "Uniqueness",
+          "label": "Claim is not a duplicate of another",
+          "applicable": 155,
+          "rawPass": 155,
+          "normPass": 155
+        }
+      ],
+      "reconciliation": {
+        "unexplained": [],
+        "regressions": [],
+        "noScoreEffect": {
+          "code-system-alias": 11,
+          "vendor-code-system-alias": 85
+        },
+        "oneSided": {
+          "billed-not-sentinel": 19
+        }
+      }
+    },
+    {
+      "payer": "firely",
+      "claims": 200,
+      "raw": {
+        "overall": 80.3,
+        "grade": "B",
+        "dimensions": {
+          "Availability": 64.3,
+          "Accuracy": 89.3,
+          "Conformity": 57.9,
+          "Plausibility": 100,
+          "Uniqueness": 90
+        }
+      },
+      "normalized": {
+        "overall": 90.2,
+        "grade": "A",
+        "dimensions": {
+          "Availability": 81,
+          "Accuracy": 92.4,
+          "Conformity": 78.8,
+          "Plausibility": 100,
+          "Uniqueness": 99
+        }
+      },
+      "gainedBy": {
+        "adjudication-system-restored": 7.5,
+        "dedupe:fingerprint": 1.8,
+        "date-to-day": 0.6
+      },
+      "checks": [
+        {
+          "id": "service-date",
+          "dimension": "Availability",
+          "label": "Service date present",
+          "applicable": 200,
+          "rawPass": 200,
+          "normPass": 200
+        },
+        {
+          "id": "billed-amount",
+          "dimension": "Availability",
+          "label": "Billed amount present",
+          "applicable": 200,
+          "rawPass": 33,
+          "normPass": 200
+        },
+        {
+          "id": "claim-type",
+          "dimension": "Availability",
+          "label": "CARIN claim type present",
+          "applicable": 200,
+          "rawPass": 200,
+          "normPass": 200
+        },
+        {
+          "id": "claim-id",
+          "dimension": "Availability",
+          "label": "CARIN unique claim id present",
+          "applicable": 200,
+          "rawPass": 33,
+          "normPass": 33
+        },
+        {
+          "id": "provider",
+          "dimension": "Availability",
+          "label": "Billing provider NPI present",
+          "applicable": 200,
+          "rawPass": 177,
+          "normPass": 177
+        },
+        {
+          "id": "npi-valid",
+          "dimension": "Accuracy",
+          "label": "Provider NPI passes check digit",
+          "applicable": 177,
+          "rawPass": 151,
+          "normPass": 151
+        },
+        {
+          "id": "dates-are-dates",
+          "dimension": "Accuracy",
+          "label": "Service dates are day-precision (consistency)",
+          "applicable": 200,
+          "rawPass": 181,
+          "normPass": 200
+        },
+        {
+          "id": "billed-not-sentinel",
+          "dimension": "Accuracy",
+          "label": "Billed amount is not a sentinel (999…)",
+          "applicable": 200,
+          "rawPass": 184,
+          "normPass": 184
+        },
+        {
+          "id": "code-systems",
+          "dimension": "Conformity",
+          "label": "Codes use canonical code systems",
+          "applicable": 200,
+          "rawPass": 197,
+          "normPass": 197
+        },
+        {
+          "id": "no-duplicate-codings",
+          "dimension": "Conformity",
+          "label": "No code listed twice under two systems",
+          "applicable": 200,
+          "rawPass": 200,
+          "normPass": 200
+        },
+        {
+          "id": "adjudication-coded",
+          "dimension": "Conformity",
+          "label": "Amount categories carry a code system",
+          "applicable": 200,
+          "rawPass": 33,
+          "normPass": 200
+        },
+        {
+          "id": "carin-profile",
+          "dimension": "Conformity",
+          "label": "Claim declares a CARIN profile",
+          "applicable": 200,
+          "rawPass": 33,
+          "normPass": 33
+        },
+        {
+          "id": "period-order",
+          "dimension": "Plausibility",
+          "label": "Service end is not before start",
+          "applicable": 200,
+          "rawPass": 200,
+          "normPass": 200
+        },
+        {
+          "id": "not-future",
+          "dimension": "Plausibility",
+          "label": "Service date is not in the future",
+          "applicable": 200,
+          "rawPass": 200,
+          "normPass": 200
+        },
+        {
+          "id": "paid-le-billed",
+          "dimension": "Plausibility",
+          "label": "Paid does not exceed billed",
+          "applicable": 30,
+          "rawPass": 30,
+          "normPass": 30
+        },
+        {
+          "id": "unique",
+          "dimension": "Uniqueness",
+          "label": "Claim is not a duplicate of another",
+          "applicable": 200,
+          "rawPass": 180,
+          "normPass": 198
+        }
+      ],
+      "reconciliation": {
+        "unexplained": [],
+        "regressions": [],
+        "noScoreEffect": {},
+        "oneSided": {
+          "billed-not-sentinel": 167
+        }
+      }
+    },
+    {
+      "payer": "hapi",
+      "claims": 200,
+      "raw": {
+        "overall": 84.5,
+        "grade": "B",
+        "dimensions": {
+          "Availability": 65.1,
+          "Accuracy": 94.5,
+          "Conformity": 63.1,
+          "Plausibility": 100,
+          "Uniqueness": 100
+        }
+      },
+      "normalized": {
+        "overall": 91.2,
+        "grade": "A",
+        "dimensions": {
+          "Availability": 79.8,
+          "Accuracy": 94.5,
+          "Conformity": 81.5,
+          "Plausibility": 100,
+          "Uniqueness": 100
+        }
+      },
+      "gainedBy": {
+        "adjudication-system-restored": 6.6
+      },
+      "checks": [
+        {
+          "id": "service-date",
+          "dimension": "Availability",
+          "label": "Service date present",
+          "applicable": 200,
+          "rawPass": 199,
+          "normPass": 199
+        },
+        {
+          "id": "billed-amount",
+          "dimension": "Availability",
+          "label": "Billed amount present",
+          "applicable": 200,
+          "rawPass": 53,
+          "normPass": 200
+        },
+        {
+          "id": "claim-type",
+          "dimension": "Availability",
+          "label": "CARIN claim type present",
+          "applicable": 200,
+          "rawPass": 200,
+          "normPass": 200
+        },
+        {
+          "id": "claim-id",
+          "dimension": "Availability",
+          "label": "CARIN unique claim id present",
+          "applicable": 200,
+          "rawPass": 52,
+          "normPass": 52
+        },
+        {
+          "id": "provider",
+          "dimension": "Availability",
+          "label": "Billing provider NPI present",
+          "applicable": 200,
+          "rawPass": 147,
+          "normPass": 147
+        },
+        {
+          "id": "npi-valid",
+          "dimension": "Accuracy",
+          "label": "Provider NPI passes check digit",
+          "applicable": 147,
+          "rawPass": 133,
+          "normPass": 133
+        },
+        {
+          "id": "dates-are-dates",
+          "dimension": "Accuracy",
+          "label": "Service dates are day-precision (consistency)",
+          "applicable": 199,
+          "rawPass": 199,
+          "normPass": 199
+        },
+        {
+          "id": "billed-not-sentinel",
+          "dimension": "Accuracy",
+          "label": "Billed amount is not a sentinel (999…)",
+          "applicable": 200,
+          "rawPass": 186,
+          "normPass": 186
+        },
+        {
+          "id": "code-systems",
+          "dimension": "Conformity",
+          "label": "Codes use canonical code systems",
+          "applicable": 200,
+          "rawPass": 200,
+          "normPass": 200
+        },
+        {
+          "id": "no-duplicate-codings",
+          "dimension": "Conformity",
+          "label": "No code listed twice under two systems",
+          "applicable": 200,
+          "rawPass": 200,
+          "normPass": 200
+        },
+        {
+          "id": "adjudication-coded",
+          "dimension": "Conformity",
+          "label": "Amount categories carry a code system",
+          "applicable": 200,
+          "rawPass": 53,
+          "normPass": 200
+        },
+        {
+          "id": "carin-profile",
+          "dimension": "Conformity",
+          "label": "Claim declares a CARIN profile",
+          "applicable": 200,
+          "rawPass": 52,
+          "normPass": 52
+        },
+        {
+          "id": "period-order",
+          "dimension": "Plausibility",
+          "label": "Service end is not before start",
+          "applicable": 199,
+          "rawPass": 199,
+          "normPass": 199
+        },
+        {
+          "id": "not-future",
+          "dimension": "Plausibility",
+          "label": "Service date is not in the future",
+          "applicable": 199,
+          "rawPass": 199,
+          "normPass": 199
+        },
+        {
+          "id": "paid-le-billed",
+          "dimension": "Plausibility",
+          "label": "Paid does not exceed billed",
+          "applicable": 52,
+          "rawPass": 52,
+          "normPass": 52
+        },
+        {
+          "id": "unique",
+          "dimension": "Uniqueness",
+          "label": "Claim is not a duplicate of another",
+          "applicable": 200,
+          "rawPass": 200,
+          "normPass": 200
+        }
+      ],
+      "reconciliation": {
+        "unexplained": [],
+        "regressions": [],
+        "noScoreEffect": {},
+        "oneSided": {
+          "paid-le-billed": 52,
+          "billed-not-sentinel": 147
+        }
+      }
+    }
+  ]
+}

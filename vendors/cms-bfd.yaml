@@ -1,0 +1,18 @@
+# CMS Beneficiary FHIR Data server (behind the Blue Button 2.0 API).
+vendor:
+  id: cms-bfd
+  match:
+    softwareName: "^Blue Button API"
+  notes:
+    - Read-only; every data call needs a SMART on FHIR access token (PKCE supported).
+    - Pages with next links that carry startIndex; follow the link, never build it.
+    - Returns CARIN-profiled resources even though its CapabilityStatement declares only base profiles.
+normalize:
+  # CMS spells HCPCS three ways; all mean the HL7 canonical HCPCS system.
+  codeSystemAliases:
+    https://bluebutton.cms.gov/resources/codesystem/hcpcs: https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets
+    https://bluebutton.cms.gov/resources/variables/hcpcs_cd: https://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets
+  # CMS institutional claims carry total charges under a CMS variable instead of adjudication "submitted".
+  amountAliases:
+    billed:
+      - https://bluebutton.cms.gov/resources/variables/clm_tot_chrg_amt
